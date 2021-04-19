@@ -1,14 +1,21 @@
 #include <iostream>
+#include <string>
 #include <vector>
+
+#ifndef MY_OWN_POLYNOMIAL_CLASS
+#define MY_OWN_POLYNOMIAL_CLASS
 
 class Polynomial
 {
 public:
     int degree;
-    std::vector<double> coef;
+    std::vector<int> coef;
     Polynomial();
-    Polynomial(std::vector<double>);
+    Polynomial(std::vector<int>);
     void update();
+    std::string printPoly();
     Polynomial operator+(const Polynomial&);
-    void printPoly();
+    Polynomial operator*(const Polynomial&);
 };
+
+#endif
