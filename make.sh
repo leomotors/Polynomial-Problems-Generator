@@ -1,0 +1,1 @@
+gcc -o main ./src/main.cpp ./src/polynomial.cpp
