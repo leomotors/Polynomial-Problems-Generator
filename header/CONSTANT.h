@@ -1,3 +1,3 @@
-#ifndef CONSTANT_RANGE
-#define CONSTANT_RANGE 20
+#ifndef ROOT_RANGE
+#define ROOT_RANGE 20
 #endif

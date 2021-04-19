@@ -1,12 +1,12 @@
 #include "../header/polyrand.hpp"
 
-std::vector<int> generateKey(int count)
+std::vector<int> randPoly(int degree)
 {
     std::srand(std::time(NULL));
     std::vector<int> result;
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < degree; i++)
     {
-        result.push_back((std::rand() % (CONSTANT_RANGE * 2)) - CONSTANT_RANGE);
+        result.push_back((std::rand() % (ROOT_RANGE * 2)) - ROOT_RANGE);
     }
     return result;
 }

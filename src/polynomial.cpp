@@ -27,7 +27,7 @@ std::string Polynomial::printPoly()
     {
         if (this->coef[i])
         {
-            if(this->coef[i]!=1)
+            if (this->coef[i] != 1)
                 resultstr.append(std::to_string(this->coef[i]));
             resultstr.append("x^");
             resultstr.append(std::to_string(i));
@@ -36,7 +36,7 @@ std::string Polynomial::printPoly()
     }
     if (degree >= 1 && this->coef[1] && this->coef[0])
     {
-        if(this->coef[1]!=1)
+        if (this->coef[1] != 1)
             resultstr.append(std::to_string(this->coef[1]));
         resultstr.append("x + ");
         resultstr.append(std::to_string(this->coef[0]));
@@ -66,12 +66,12 @@ std::string Polynomial::printPoly()
 
 Polynomial Polynomial::operator+(const Polynomial &other)
 {
-    auto fillZero = [](std::vector<int> coef, int target) {
-        while (coef.size() < target)
+    auto fillZero = [](std::vector<int> coef_temp, int target) {
+        while ((int)coef_temp.size() < target)
         {
-            coef.push_back(0);
+            coef_temp.push_back(0);
         }
-        return coef;
+        return coef_temp;
     };
 
     std::vector<int> p1, p2;

@@ -6,5 +6,5 @@
 #include "polynomial.hpp"
 #include "CONSTANT.h"
 
-std::vector<int> generateKey(int);
+std::vector<int> randPoly(int);
 Polynomial createPolynomial(std::vector<int>);

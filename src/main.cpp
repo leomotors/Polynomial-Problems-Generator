@@ -8,8 +8,11 @@
 
 int main()
 {
-    std::vector<int> kk{2,-2};
-    Polynomial res = createPolynomial(kk);
+    int N;
+    std::cout << "Enter degree => ";
+    std::cin >> N;
+    std::vector<int> p1 = randPoly(N);
+    Polynomial res = createPolynomial(p1);
     std::cout << res.printPoly() << std::endl;
     return 0;
 }
