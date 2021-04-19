@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+#include "CONSTANT.h"
+
 #ifndef MY_OWN_POLYNOMIAL_CLASS
 #define MY_OWN_POLYNOMIAL_CLASS
 
