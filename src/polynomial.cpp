@@ -1,4 +1,7 @@
-#include "../header/polynomial.hpp"
+#include <vector>
+#include <string>
+
+#include "polynomial.hpp"
 
 Polynomial::Polynomial()
 {

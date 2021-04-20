@@ -1,10 +1,6 @@
-#include <iostream>
 #include <vector>
-#include <cstdlib>
-#include <ctime>
 
-#include "polynomial.hpp"
-#include "CONSTANT.h"
-
+#ifndef POLYNOMIAL_RANDOM
+#define POLYNOMIAL_RANDOM
 std::vector<int> randPoly(int);
-Polynomial createPolynomial(std::vector<int>);
+#endif

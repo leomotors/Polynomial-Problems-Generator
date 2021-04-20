@@ -1,1 +1,0 @@
-g++ -o main -Wall -Wextra -Wundef -Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings -Wcast-qual -Wunreachable-code -lm ./src/main.cpp ./src/polynomial.cpp ./src/polyrand.cpp

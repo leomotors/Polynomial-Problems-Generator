@@ -8,6 +8,6 @@ R U TRIED OF Your Smol Bro cannot factor polynomial?
 
 Send this program to them! (compile first)
 
-## Implement
+## To Compile
 
-chmod +x make.sh
+```>> make```
