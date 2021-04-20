@@ -2,4 +2,4 @@
 
 #include "polynomial.hpp"
 
-Polynomial createPolynomial(std::vector<int>);
+Polynomial createPolynomial(std::vector<std::pair<int, int>>);

@@ -2,5 +2,5 @@
 
 #ifndef POLYNOMIAL_RANDOM
 #define POLYNOMIAL_RANDOM
-std::vector<int> randPoly(int);
+std::vector<std::pair<int, int>> randPoly(int);
 #endif

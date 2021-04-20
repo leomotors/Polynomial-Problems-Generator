@@ -15,8 +15,8 @@ public:
     Polynomial(std::vector<int>);
     void update();
     std::string printPoly();
-    Polynomial operator+(const Polynomial&);
-    Polynomial operator*(const Polynomial&);
+    Polynomial operator+(const Polynomial &);
+    Polynomial operator*(const Polynomial &);
 };
 
 #endif

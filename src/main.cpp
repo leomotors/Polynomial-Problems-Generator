@@ -15,7 +15,7 @@ int main()
     std::cin >> T;
     for (int i = 1; i <= T; i++)
     {
-        std::vector<int> p1 = randPoly(2);
+        std::vector<std::pair<int, int>> p1 = randPoly(2);
         Polynomial res = createPolynomial(p1);
         std::cout << res.printPoly() << std::endl;
     }

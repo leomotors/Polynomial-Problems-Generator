@@ -1,3 +1,7 @@
-#ifndef ROOT_RANGE
-#define ROOT_RANGE 20
+#ifndef ROOT_RANGE_NUM
+#define ROOT_RANGE_NUM 20 // * -n -> n-1
+#endif
+
+#ifndef ROOT_RANGE_DENOM
+#define ROOT_RANGE_DENOM 6 // * 1 -> n
 #endif
