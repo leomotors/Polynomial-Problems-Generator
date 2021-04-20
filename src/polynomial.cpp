@@ -1,5 +1,7 @@
 #include <vector>
 #include <string>
+#include <utility>
+#include <cmath>
 
 #include "polynomial.hpp"
 
@@ -24,44 +26,45 @@ void Polynomial::update()
 
 std::string Polynomial::printPoly()
 {
-    int temp_iter = this->degree;
+    int max_degree = this->degree;
     std::string resultstr;
-    for (int i = temp_iter; i >= 2; i--)
+    std::vector<std::pair<int, int>> term_list;
+
+    for (int i = max_degree; i >= 0; i--)
     {
         if (this->coef[i])
         {
-            if (this->coef[i] != 1)
-                resultstr.append(std::to_string(this->coef[i]));
-            resultstr.append("x^");
-            resultstr.append(std::to_string(i));
-            resultstr.append(" + ");
-        }
-    }
-    if (degree >= 1 && this->coef[1] && this->coef[0])
-    {
-        if (this->coef[1] != 1)
-            resultstr.append(std::to_string(this->coef[1]));
-        resultstr.append("x + ");
-        resultstr.append(std::to_string(this->coef[0]));
-    }
-    else
-    {
-        if (degree >= 1 && this->coef[1])
-        {
-            resultstr.append(std::to_string(this->coef[1]));
-            resultstr.append("x");
-        }
-        if (this->coef[0])
-        {
-            resultstr.append(std::to_string(this->coef[0]));
+            term_list.push_back(std::make_pair(coef[i], i));
         }
     }
 
-    if (resultstr[resultstr.size() - 2] == '+')
+    if (term_list[0].first != 1)
+        resultstr += std::to_string(term_list[0].first);
+    if (term_list[0].second)
     {
-        resultstr.pop_back();
-        resultstr.pop_back();
-        resultstr.pop_back();
+        resultstr += "x^";
+        resultstr += std::to_string(term_list[0].second);
+    }
+
+    int term_count = term_list.size();
+    for (int i = 1; i < term_count; i++)
+    {
+        std::pair<int, int> term = term_list[i];
+        if (term.first > 0)
+            resultstr += " + ";
+        else
+            resultstr += " - ";
+        if (std::abs(term.first) != 1 || term.second == 0)
+            resultstr += std::to_string(std::abs(term.first));
+        if (term.second > 1)
+        {
+            resultstr += "x^";
+            resultstr += std::to_string(term.second);
+        }
+        else if (term.second == 1)
+        {
+            resultstr += "x";
+        }
     }
 
     return resultstr;
