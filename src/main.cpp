@@ -17,7 +17,13 @@ int main()
     {
         std::vector<std::pair<int, int>> p1 = randPoly(2);
         Polynomial res = createPolynomial(p1);
-        std::cout << res.printPoly() << std::endl;
+        std::cout << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
+        std::cout << "Roots are ";
+        for(std::pair<int,int> root : p1)
+        {
+            std::cout << root.first<< "/" << root.second << " ";
+        }
+        std::cout << std::endl;
     }
     return 0;
 }
