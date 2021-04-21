@@ -16,6 +16,7 @@
 
 namespace tsi
 {
+    using namespace std;
     long getLong(const char *prompt)
     {
         char *buffer = getString(prompt);
