@@ -1,4 +1,5 @@
 #include <vector>
+#include <utility>
 
 #include "polynomial.hpp"
 
@@ -7,6 +8,8 @@
 namespace PolyGenerator
 {
     Polynomial random(int);
+    Polynomial getCurrPoly();
+    std::vector<std::pair<int, int>> getCurrRoots();
 };
 
 #endif

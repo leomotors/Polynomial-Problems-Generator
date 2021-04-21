@@ -11,6 +11,9 @@
 
 void printMainMenu();
 void interactiveMode();
+void testMode();
+void endlessMode();
+void timelimitMode();
 void generateMode();
 
 int main()
@@ -58,11 +61,27 @@ void interactiveMode()
     std::cout << std::endl;
 
     int choice = tsi::getInt("Your Choice: ");
-    switch(choice)
+    switch (choice)
     {
-        case 1:
-        default:
+    case 1:
+        testMode();
+        break;
+    case 0:
+    return;
+    default:
         std::cout << "Unknown Choice!" << std::endl;
+    }
+}
+
+void testMode()
+{
+    int questions = tsi::getInt("Number of question: ");
+    int difficulity = tsi::getInt("Degree of Polynomial: ");
+
+    for(int i = 1; i <= questions ; i++)
+    {
+        Polynomial res = PolyGenerator::random(difficulity);
+        std::cout << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
     }
 }
 

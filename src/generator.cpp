@@ -9,7 +9,7 @@ namespace PolyGenerator
 {
     Polynomial curr_poly;
     std::vector<std::pair<int, int>> curr_roots;
-    
+
     Polynomial random(int degree)
     {
         std::vector<std::pair<int, int>> roots = randPoly(degree);
@@ -26,5 +26,15 @@ namespace PolyGenerator
         curr_poly = base;
         curr_roots = roots;
         return base;
+    }
+
+    Polynomial getCurrPoly()
+    {
+        return curr_poly;
+    }
+
+    std::vector<std::pair<int, int>> GetCurrRoots()
+    {
+        return curr_roots;
     }
 }
