@@ -6,8 +6,11 @@
 #include "polynomial.hpp"
 #include "polyrand.hpp"
 #include "generator.hpp"
+#include "SafeInput.h"
 
-int main()
+void printMainMenu();
+
+void oldmain()
 {
     std::srand(std::time(0));
     int T;
@@ -19,5 +22,31 @@ int main()
         Polynomial res = createPolynomial(p1);
         std::cout << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
     }
+}
+int main()
+{
+    int choice;
+    while (true)
+    {
+        printMainMenu();
+        choice = tsi::getInt("Choice: ");
+        std::cout << "Got " << choice << std::endl;
+        switch (choice)
+        {
+        case 2:
+        default:
+            std::cout << "Unknown Choice!" << std::endl;
+        }
+    }
+
     return 0;
+}
+
+void printMainMenu()
+{
+    std::cout << "WELCOME TO MY PROGRAM\n";
+    std::cout << "[1] Interactive Mode\n";
+    std::cout << "[2] Generator Mode\n";
+    std::cout << "[0] Exit\n";
+    std::cout << std::endl;
 }
