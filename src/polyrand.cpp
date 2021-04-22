@@ -6,13 +6,13 @@
 #include "polyrand.hpp"
 #include "CONSTANT.h"
 
-std::vector<std::pair<int, int>> randPoly(int degree)
+std::vector<std::pair<int, int>> randPoly(int degree, int num_range, int denom_range)
 {
     std::vector<std::pair<int, int>> result;
     for (int i = 0; i < degree; i++)
     {
-        int num = (std::rand() % (ROOT_RANGE_NUM * 2)) - ROOT_RANGE_NUM;
-        int denom = (std::rand() % ROOT_RANGE_DENOM) + 1;
+        int num = (std::rand() % (num_range * 2)) - num_range;
+        int denom = (std::rand() % denom_range) + 1;
         if (std::gcd(num, denom) != 1)
         {
             num /= std::gcd(num, denom);

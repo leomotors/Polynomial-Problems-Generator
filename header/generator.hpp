@@ -7,7 +7,7 @@
 #define POLYNOMIAL_GENERATOR
 namespace PolyGenerator
 {
-    Polynomial random(int);
+    Polynomial random(int,int,int);
     Polynomial getCurrPoly();
     std::vector<std::pair<int, int>> getCurrRoots();
 };

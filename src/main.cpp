@@ -50,6 +50,7 @@ void printMainMenu()
     std::cout << "\n=====|MAIN MENU|=====\n";
     std::cout << "[1] Interactive Mode\n";
     std::cout << "[2] Generator Mode\n";
+    std::cout << "[3] Settings\n";
     std::cout << "[0] Exit\n";
     std::cout << std::endl;
 }
@@ -83,7 +84,7 @@ void testMode()
 
     for (int i = 1; i <= questions; i++)
     {
-        Polynomial res = PolyGenerator::random(difficulity);
+        Polynomial res = PolyGenerator::random(difficulity,20,3);
         std::cout << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
         std::string submission = tsi::getString("Your answer: ");
 
@@ -111,7 +112,7 @@ void generateMode()
     int T = tsi::getInt("Number of polynomial: ");
     for (int i = 1; i <= T; i++)
     {
-        Polynomial res = PolyGenerator::random(difficulity);
+        Polynomial res = PolyGenerator::random(difficulity,20,3);
         OutFile << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
     }
 
