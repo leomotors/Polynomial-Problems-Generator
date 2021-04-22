@@ -19,4 +19,9 @@ namespace pSettings
     {
         return denom_range;
     }
+
+    void SettingsCore()
+    {
+        
+    }
 }

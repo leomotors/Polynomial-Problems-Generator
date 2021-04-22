@@ -7,6 +7,8 @@ namespace pSettings
     void setDenomRange(int);
     int getNumRange();
     int getDenomRange();
+
+    void SettingsCore();
 }
 
 #endif

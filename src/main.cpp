@@ -11,6 +11,7 @@
 #include "utilsMethod.hpp"
 #include "SafeInput.hpp"
 #include "pSettings.hpp"
+#include "menu.hpp"
 
 void printMainMenu();
 void interactiveMode();
@@ -25,7 +26,7 @@ int main()
     int choice;
     while (true)
     {
-        printMainMenu();
+        menu::mainMenu();
         choice = tsi::getInt("Choice: ");
         switch (choice)
         {
@@ -46,24 +47,9 @@ int main()
     return 0;
 }
 
-void printMainMenu()
-{
-    std::cout << "\n=====|MAIN MENU|=====\n";
-    std::cout << "[1] Interactive Mode\n";
-    std::cout << "[2] Generator Mode\n";
-    std::cout << "[3] Settings\n";
-    std::cout << "[0] Exit\n";
-    std::cout << std::endl;
-}
-
 void interactiveMode()
 {
-    std::cout << "\n=====|INTERACTIVE MODE|=====\n";
-    std::cout << "[1] Test Mode\n";
-    std::cout << "[2] Endless Mode\n";
-    std::cout << "[3] Time Limit Mode\n";
-    std::cout << "[0] Back\n";
-    std::cout << std::endl;
+    menu::interactiveMenu();
 
     int choice = tsi::getInt("Your Choice: ");
     switch (choice)
