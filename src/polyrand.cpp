@@ -4,9 +4,12 @@
 #include <numeric>
 
 #include "polyrand.hpp"
+#include "pSettings.hpp"
 
-std::vector<std::pair<int, int>> randPoly(int degree, int num_range, int denom_range)
+std::vector<std::pair<int, int>> randPoly(int degree)
 {
+    int num_range = 2;
+    int denom_range = 3;
     std::vector<std::pair<int, int>> result;
     for (int i = 0; i < degree; i++)
     {

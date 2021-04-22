@@ -9,7 +9,8 @@
 #include "generator.hpp"
 #include "grader.hpp"
 #include "utilsMethod.hpp"
-#include "SafeInput.h"
+#include "SafeInput.hpp"
+#include "pSettings.hpp"
 
 void printMainMenu();
 void interactiveMode();
@@ -84,7 +85,7 @@ void testMode()
 
     for (int i = 1; i <= questions; i++)
     {
-        Polynomial res = PolyGenerator::random(difficulity,20,3);
+        Polynomial res = PolyGenerator::random(difficulity);
         std::cout << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
         std::string submission = tsi::getString("Your answer: ");
 
