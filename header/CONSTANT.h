@@ -3,5 +3,5 @@
 #endif
 
 #ifndef ROOT_RANGE_DENOM
-#define ROOT_RANGE_DENOM 6 // * 1 -> n
+#define ROOT_RANGE_DENOM 3 // * 1 -> n
 #endif

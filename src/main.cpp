@@ -7,6 +7,8 @@
 #include "polynomial.hpp"
 #include "polyrand.hpp"
 #include "generator.hpp"
+#include "grader.hpp"
+#include "utilsMethod.hpp"
 #include "SafeInput.h"
 
 void printMainMenu();
@@ -33,6 +35,7 @@ int main()
             generateMode();
             break;
         case 0:
+            std::cout << "GOODBYE JOJO!!!" << std::endl;
             return 0;
         default:
             std::cout << "Unknown Choice!" << std::endl;
@@ -67,7 +70,7 @@ void interactiveMode()
         testMode();
         break;
     case 0:
-    return;
+        return;
     default:
         std::cout << "Unknown Choice!" << std::endl;
     }
@@ -78,10 +81,17 @@ void testMode()
     int questions = tsi::getInt("Number of question: ");
     int difficulity = tsi::getInt("Degree of Polynomial: ");
 
-    for(int i = 1; i <= questions ; i++)
+    for (int i = 1; i <= questions; i++)
     {
         Polynomial res = PolyGenerator::random(difficulity);
         std::cout << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
+        std::string submission = tsi::getString("Your answer: ");
+
+        std::vector<std::string> splited_submission = splitStr(submission, ' ');
+        if (isAnswer(PolyGenerator::getCurrRoots(), splited_submission))
+            std::cout << "CORRECT!" << std::endl;
+        else
+            std::cout << "YOU SUCK BLYAT!" << std::endl;
     }
 }
 

@@ -4,7 +4,7 @@ CPPSTANDARD := c++17
 
 CXXFLAGS := -Wall -Wextra -Wundef -Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings -Wcast-qual -Wunreachable-code
 
-SOURCE_FILES := ./src/main.cpp ./src/polynomial.cpp ./src/polyrand.cpp ./src/generator.cpp ./src/SafeInput.cpp
+SOURCE_FILES := ./src/main.cpp ./src/polynomial.cpp ./src/polyrand.cpp ./src/generator.cpp ./src/utilsMethod.cpp ./src/grader.cpp ./src/SafeInput.cpp
 
 HEADER_FOLDER := ./header
 

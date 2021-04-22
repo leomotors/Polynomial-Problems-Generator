@@ -33,7 +33,7 @@ namespace PolyGenerator
         return curr_poly;
     }
 
-    std::vector<std::pair<int, int>> GetCurrRoots()
+    std::vector<std::pair<int, int>> getCurrRoots()
     {
         return curr_roots;
     }
