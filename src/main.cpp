@@ -95,6 +95,7 @@ void testMode()
             std::cout << "YOU SUCK BLYAT!" << std::endl;
             std::cout << "CORRECT IS " << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
         }
+        std::cout << std::endl;
     }
 }
 

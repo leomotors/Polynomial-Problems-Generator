@@ -8,35 +8,21 @@
 
 bool isAnswer(std::vector<std::pair<int, int>> roots_dup, std::vector<std::string> submission)
 {
-    std::vector<std::pair<int, int>> roots;
-    for (int i = 0; i < roots_dup.size(); i++)
-    {
-        bool alreadyIn = false;
-        for (int j = 0; j < roots.size(); j++)
-        {
-            if (roots[j] == roots_dup[i])
-            {
-                alreadyIn = true;
-                break;
-            }
-        }
-        if (!alreadyIn)
-            roots.push_back(roots_dup[i]);
-    }
+    std::vector<std::pair<int, int>> roots = drop_dupl(roots_dup);
 
     if (roots.size() != submission.size())
         return false;
 
-    for (int i = 0; i < submission.size(); i++)
+    for (unsigned int i = 0; i < submission.size(); i++)
     {
         std::string thissubm = submission[i];
         std::pair<int, int> convertedsubm;
         std::vector<std::string> splited = splitStr(thissubm, '/');
-        if (splited.size() < 1)
+        if (splited.size() < 2)
             splited.push_back("1");
 
         int thisCorrect = false;
-        for (int j = 0; j < roots.size(); j++)
+        for (unsigned int j = 0; j < roots.size(); j++)
         {
             bool num = splited[0] == std::to_string(roots[j].first);
             bool denom = splited[1] == std::to_string(roots[j].second);
