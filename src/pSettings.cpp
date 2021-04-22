@@ -1,4 +1,9 @@
+#include <iostream>
+
 #include "pSettings.hpp"
+#include "menu.hpp"
+#include "SafeInput.hpp"
+
 namespace pSettings
 {
     int num_range = 20;
@@ -20,8 +25,25 @@ namespace pSettings
         return denom_range;
     }
 
-    void SettingsCore()
+    void page()
     {
-        
+        menu::settings();
+        int choice = tsi::getInt("Choice: ");
+        int nr, dr;
+        switch (choice)
+        {
+        case 1:
+            nr = tsi::getInt("Enter New Numerator Random Range: ");
+            setNumRange(nr);
+            break;
+        case 2:
+            dr = tsi::getInt("Enter New Denominator Random Range: ");
+            setDenomRange(dr);
+            break;
+        case 0:
+            return;
+        default:
+            std::cout << "Unknown Choice!" << std::endl;
+        }
     }
 }

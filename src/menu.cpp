@@ -13,12 +13,20 @@ namespace menu
         std::cout << "[0] Exit\n";
         std::cout << std::endl;
     }
-    void interactiveMenu()
+    void interactive()
     {
         std::cout << "\n=====|INTERACTIVE MODE|=====\n";
         std::cout << "[1] Test Mode\n";
         std::cout << "[2] Endless Mode\n";
         std::cout << "[3] Time Limit Mode\n";
+        std::cout << "[0] Back\n";
+        std::cout << std::endl;
+    }
+    void settings()
+    {
+        std::cout << "\n=====|SETTINGS|=====\n";
+        std::cout << "[1] Set Numerator Random Range\n";
+        std::cout << "[2] Set Denominator Random Range\n";
         std::cout << "[0] Back\n";
         std::cout << std::endl;
     }

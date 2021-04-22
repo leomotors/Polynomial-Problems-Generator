@@ -4,7 +4,8 @@
 namespace menu
 {
     void mainMenu();
-    void interactiveMenu();
+    void interactive();
+    void settings();
 }
 
 #endif

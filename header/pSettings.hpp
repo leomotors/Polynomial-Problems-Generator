@@ -8,7 +8,7 @@ namespace pSettings
     int getNumRange();
     int getDenomRange();
 
-    void SettingsCore();
+    void page();
 }
 
 #endif

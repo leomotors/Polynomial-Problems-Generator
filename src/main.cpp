@@ -36,6 +36,9 @@ int main()
         case 2:
             generateMode();
             break;
+        case 3:
+            pSettings::page();
+            break;
         case 0:
             std::cout << "GOODBYE JOJO!!!" << std::endl;
             return 0;
@@ -49,7 +52,7 @@ int main()
 
 void interactiveMode()
 {
-    menu::interactiveMenu();
+    menu::interactive();
 
     int choice = tsi::getInt("Your Choice: ");
     switch (choice)
