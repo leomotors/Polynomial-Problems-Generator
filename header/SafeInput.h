@@ -11,12 +11,14 @@
 #define INITIAL_BUFFER 8
 #endif
 
+#include <string>
+
 namespace tsi
 {
     long long getlong(const char *);
     int getInt(const char *);
     double getDouble(const char *);
-    char *getString(const char *);
+    std::string getString(const char *);
     void memoryError(const void *);
 }
 

@@ -39,7 +39,3 @@ bool isAnswer(std::vector<std::pair<int, int>> roots_dup, std::vector<std::strin
 
     return true;
 }
-
-std::string rootsToStr(std::vector<std::pair<int,int>>){
-    
-}

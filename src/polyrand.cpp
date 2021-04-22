@@ -4,7 +4,6 @@
 #include <numeric>
 
 #include "polyrand.hpp"
-#include "CONSTANT.h"
 
 std::vector<std::pair<int, int>> randPoly(int degree, int num_range, int denom_range)
 {

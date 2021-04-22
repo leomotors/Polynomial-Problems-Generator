@@ -14,15 +14,17 @@
 #include <cstdlib>
 #include <cstring>
 
+#include <string>
+
 namespace tsi
 {
     using namespace std;
     long getLong(const char *prompt)
     {
-        char *buffer = getString(prompt);
+        const char *buffer = getString(prompt).c_str();
+        ;
         if (buffer[0] == '\0')
         {
-            free(buffer);
             printf("Input error, please try again!\n");
             return getLong(prompt);
         }
@@ -33,14 +35,10 @@ namespace tsi
         long n = strtol(buffer, &end, 10);
         if (errno || *end != '\0')
         {
-            free(buffer);
             fprintf(stderr, "Value conversion error\n");
             printf("Input error, please try again!\n");
             return getLong(prompt);
         }
-
-        free(buffer);
-
         return n;
     }
 
@@ -57,10 +55,9 @@ namespace tsi
 
     double getDouble(const char *prompt)
     {
-        char *buffer = getString(prompt);
+        const char *buffer = getString(prompt).c_str();
         if (buffer[0] == '\0')
         {
-            free(buffer);
             printf("Input error, please try again!\n");
             return getLong(prompt);
         }
@@ -71,18 +68,15 @@ namespace tsi
         double n = strtod(buffer, &end);
         if (errno || *end != '\0')
         {
-            free(buffer);
             fprintf(stderr, "Value conversion error\n");
             printf("Input error, please try again!\n");
             return getDouble(prompt);
         }
 
-        free(buffer);
-
         return n;
     }
 
-    char *getString(const char *prompt)
+    std::string getString(const char *prompt)
     {
         size_t size = INITIAL_BUFFER;
         printf("%s", prompt);
@@ -117,7 +111,10 @@ namespace tsi
         buffer[strlen(buffer) - 1] = '\0';
         buffer = (char *)realloc(buffer, strlen(buffer) + 1);
         memoryError(buffer);
-        return buffer;
+
+        std::string iString = buffer;
+        free(buffer);
+        return iString;
     }
 
     void memoryError(const void *pointer)
