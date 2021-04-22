@@ -4,7 +4,7 @@
  * * Customed by: @Leomotors
  */
 
-#include "SafeInput.h"
+#include "SafeInput.hpp"
 
 #include <cctype>
 #include <cerrno>

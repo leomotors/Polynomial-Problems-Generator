@@ -10,9 +10,9 @@ namespace PolyGenerator
     Polynomial curr_poly;
     std::vector<std::pair<int, int>> curr_roots;
 
-    Polynomial random(int degree, int num_range, int dr_range)
+    Polynomial random(int degree)
     {
-        std::vector<std::pair<int, int>> roots = randPoly(degree, num_range, dr_range);
+        std::vector<std::pair<int, int>> roots = randPoly(degree);
 
         int count = roots.size();
         std::vector<int> base_vec({-roots[0].first, roots[0].second});

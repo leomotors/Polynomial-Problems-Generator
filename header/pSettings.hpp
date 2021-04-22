@@ -3,10 +3,10 @@
 
 namespace pSettings
 {
-    int num_range = 20;
-    int denom_range = 3;
     void setNumRange(int);
     void setDenomRange(int);
+    int getNumRange();
+    int getDenomRange();
 }
 
 #endif

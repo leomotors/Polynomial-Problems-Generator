@@ -113,7 +113,7 @@ void generateMode()
     int T = tsi::getInt("Number of polynomial: ");
     for (int i = 1; i <= T; i++)
     {
-        Polynomial res = PolyGenerator::random(difficulity,20,3);
+        Polynomial res = PolyGenerator::random(difficulity);
         OutFile << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
     }
 
