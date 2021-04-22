@@ -91,7 +91,10 @@ void testMode()
         if (isAnswer(PolyGenerator::getCurrRoots(), splited_submission))
             std::cout << "CORRECT!" << std::endl;
         else
+        {
             std::cout << "YOU SUCK BLYAT!" << std::endl;
+            std::cout << "CORRECT IS " << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
+        }
     }
 }
 
