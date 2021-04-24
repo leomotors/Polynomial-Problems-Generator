@@ -58,7 +58,8 @@ int endlessMode()
         else
         {
             std::cout << "YOU LOSE! Nice Job" << std::endl;
-            std::cout << "CORRECT IS " << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
+            std::cout << "CORRECT IS " << rootsToStr(PolyGenerator::getCurrRoots()) << "\n"
+                      << std::endl;
             std::cout << "Your Score is " << score << "\n"
                       << std::endl;
             return score;

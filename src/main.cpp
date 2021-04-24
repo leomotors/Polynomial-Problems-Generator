@@ -58,6 +58,9 @@ void interactiveMode()
     case 1:
         testMode();
         break;
+    case 2:
+        endlessMode();
+        break;
     case 0:
         return;
     default:
