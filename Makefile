@@ -13,8 +13,13 @@ HEADER_FILES := $(wildcard */*.hpp)
 OBJECT_FOLDERS := ./src/obj
 OBJECT_FILES := $(addprefix $(OBJECT_FOLDERS)/,$(patsubst %.cpp,%.o,$(notdir $(SOURCE_FILES))))
 
+main: $(OBJECT_FILES)
+	$(CXX) $(CXXFLAGS) -std=$(CPPSTANDARD) -o $@ $^ -I$(HEADER_FOLDER)
+
 $(OBJECT_FOLDERS)/%.o: $(SOURCE_FOLDER)/%.cpp $(HEADER_FILES)
 	$(CXX) $(CXXFLAGS) -std=$(CPPSTANDARD) -c -o $@ $< -O2 -I$(HEADER_FOLDER)
 
-main: $(OBJECT_FILES)
-	$(CXX) $(CXXFLAGS) -std=$(CPPSTANDARD) -o $@ $^ -I$(HEADER_FOLDER)
+.PHONY: clean
+
+clean: 
+	rm -f $(OBJECT_FOLDERS)/*.o
