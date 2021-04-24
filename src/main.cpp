@@ -93,10 +93,17 @@ void testMode()
 void generateMode()
 {
     std::string ofile_location = "./generated/";
-    std::string ofile_name = tsi::getString("Enter Output File name: ");
+    std::string keyf_location = ofile_location;
+    std::string ofile_name = tsi::getString("Enter Output File Name: ");
     ofile_location += ofile_name;
     ofile_location += ".txt";
+
+    std::string keyf_name = tsi::getString("Enter Key File Name: ");
+    keyf_location += keyf_name;
+    keyf_location += ".txt";
+
     std::ofstream OutFile(ofile_location);
+    std::ofstream KeyFile(keyf_location);
 
     int difficulity = tsi::getInt("Degree of Polynomial: ");
     int T = tsi::getInt("Number of polynomial: ");
@@ -104,8 +111,9 @@ void generateMode()
     {
         Polynomial res = PolyGenerator::random(difficulity);
         OutFile << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
+        KeyFile << "Key of #" << i << " : " << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
     }
 
-    std::cout << "Successfully generated file" << std::endl;
+    std::cout << "Successfully generated both files" << std::endl;
     OutFile.close();
 }
