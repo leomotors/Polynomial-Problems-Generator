@@ -1,9 +1,10 @@
 #include <vector>
 #include <utility>
 
+#include "generator.hpp"
+
 #include "polynomial.hpp"
 #include "polyrand.hpp"
-#include "generator.hpp"
 
 namespace PolyGenerator
 {

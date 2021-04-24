@@ -1,8 +1,9 @@
 #include <iostream>
 
 #include "pSettings.hpp"
-#include "menu.hpp"
 #include "SafeInput.hpp"
+
+#include "menu.hpp"
 
 namespace pSettings
 {

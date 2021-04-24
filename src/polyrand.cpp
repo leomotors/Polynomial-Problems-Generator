@@ -4,6 +4,7 @@
 #include <numeric>
 
 #include "polyrand.hpp"
+
 #include "pSettings.hpp"
 
 std::vector<std::pair<int, int>> randPoly(int degree)

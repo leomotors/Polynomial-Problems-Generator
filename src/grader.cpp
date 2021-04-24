@@ -2,9 +2,9 @@
 #include <utility>
 #include <string>
 
-#include "utilsMethod.hpp"
-
 #include "grader.hpp"
+
+#include "utilsMethod.hpp"
 
 bool isAnswer(std::vector<std::pair<int, int>> roots_dup, std::vector<std::string> submission)
 {

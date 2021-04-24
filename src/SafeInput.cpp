@@ -4,8 +4,6 @@
  * * Customed by: @Leomotors
  */
 
-#include "SafeInput.hpp"
-
 #include <cctype>
 #include <cerrno>
 #include <cfloat>
@@ -15,6 +13,8 @@
 #include <cstring>
 
 #include <string>
+
+#include "SafeInput.hpp"
 
 namespace tsi
 {
