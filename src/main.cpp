@@ -61,6 +61,9 @@ void interactiveMode()
     case 2:
         endlessMode();
         break;
+    case 3:
+        timelimitMode();
+        break;
     case 0:
         return;
     default:
