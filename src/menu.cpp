@@ -2,6 +2,8 @@
 
 #include "menu.hpp"
 
+#include "pSettings.hpp"
+
 namespace menu
 {
     void mainMenu()
@@ -25,8 +27,10 @@ namespace menu
     void settings()
     {
         std::cout << "\n=====|SETTINGS|=====\n";
-        std::cout << "[1] Set Numerator Random Range\n";
-        std::cout << "[2] Set Denominator Random Range\n";
+        std::cout << "[1] Set Numerator Random Range [Current: "
+                  << pSettings::getNumRange() << "]\n";
+        std::cout << "[2] Set Denominator Random Range [Current: "
+                  << pSettings::getDenomRange() << "]\n";
         std::cout << "[0] Back\n";
         std::cout << std::endl;
     }
