@@ -1,4 +1,4 @@
-# Factoring-Polynomial-Generator
+# Polynomial Problems Generator
 
 Factoring Polynomial Exercise Generator
 
@@ -18,7 +18,7 @@ Send this program to them! (compile first)
 
 <a href="https://github.com/Leomotors/Factoring-Polynomial-Generator/blob/main/docs/usermanual.md">
 User Manual</a>
-
+<br>
 <a href="https://github.com/Leomotors/Factoring-Polynomial-Generator/blob/main/docs/playermanual.md">
 Player Manual</a>
 
