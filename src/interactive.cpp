@@ -37,6 +37,8 @@ double testMode()
         std::cout << std::endl;
     }
 
+    std::cout << "Result: You scored " << score << " out of " << questions << "!\n"
+              << std::endl;
     return (double)score / questions;
 }
 
