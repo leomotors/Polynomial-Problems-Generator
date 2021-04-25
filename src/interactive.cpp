@@ -14,6 +14,13 @@ double testMode()
 {
     int questions = tsi::getInt("Number of question: ");
     int difficulity = tsi::getInt("Degree of Polynomial: ");
+
+    if (difficulity < 2)
+    {
+        std::cout << "WARNING: Polynomial degree must be at least 2!" << std::endl;
+        return -1;
+    }
+
     int score = 0;
 
     for (int i = 1; i <= questions; i++)
@@ -45,6 +52,13 @@ double testMode()
 int endlessMode()
 {
     int difficulity = tsi::getInt("Degree of Polynomial: ");
+
+    if (difficulity < 2)
+    {
+        std::cout << "WARNING: Polynomial degree must be at least 2!" << std::endl;
+        return -1;
+    }
+
     int score = 0;
     while (true)
     {
@@ -82,6 +96,19 @@ int timelimitMode()
     std::cin >> timelimit;
     std::cout << "Enter Difficulity: ";
     std::cin >> difficulity;
+
+    if (timelimit < 1)
+    {
+        std::cout << "WARNING: Too Small Time!" << std::endl;
+        return -1;
+    }
+
+    if (difficulity < 2)
+    {
+        std::cout << "WARNING: Polynomial degree must be at least 2!" << std::endl;
+        return -1;
+    }
+
     auto TimeElapsed = [](const std::time_t from) {
         return std::time(nullptr) - from;
     };

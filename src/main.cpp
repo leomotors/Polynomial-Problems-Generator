@@ -83,11 +83,29 @@ void generateMode()
     keyf_location += keyf_name;
     keyf_location += ".txt";
 
-    std::ofstream OutFile(ofile_location);
-    std::ofstream KeyFile(keyf_location);
+    if (ofile_name == keyf_name)
+    {
+        std::cout << "ERROR: Two Files can't be the same!" << std::endl;
+        return;
+    }
+
+    if (ofile_name.size() || keyf_name.size())
+    {
+        std::cout << "ERROR: File name can't be blank!" << std::endl;
+        return;
+    }
 
     int difficulity = tsi::getInt("Degree of Polynomial: ");
+    if (difficulity < 2)
+    {
+        std::cout << "WARNING: Polynomial degree must be at least 2!" << std::endl;
+        return;
+    }
+
     int T = tsi::getInt("Number of polynomial: ");
+
+    std::ofstream OutFile(ofile_location);
+    std::ofstream KeyFile(keyf_location);
     for (int i = 1; i <= T; i++)
     {
         Polynomial res = PolyGenerator::random(difficulity);

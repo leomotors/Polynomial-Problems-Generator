@@ -11,10 +11,20 @@ namespace pSettings
     int denom_range = 3;
     void setNumRange(int nr)
     {
+        if (nr < 2)
+        {
+            std::cout << "ERROR: Numerator Range must be at least 2!" << std::endl;
+            return;
+        }
         num_range = nr;
     }
     void setDenomRange(int dr)
     {
+        if (dr < 1)
+        {
+            std::cout << "ERROR: Denominator Range must be at least 1!" << std::endl;
+            return;
+        }
         denom_range = dr;
     }
     int getNumRange()
