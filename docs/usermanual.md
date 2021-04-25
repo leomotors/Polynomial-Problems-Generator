@@ -9,7 +9,9 @@ you can play later or send this to other
 
 ## Interactive Mode
 
-Read Player Manual here
+Read Player Manual
+<a href="https://github.com/Leomotors/Factoring-Polynomial-Generator/blob/main/docs/usermanual.md">
+ here</a>
 
 ## Generator Mode
 
