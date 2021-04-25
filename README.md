@@ -25,4 +25,4 @@ Player Manual</a>
 ## 🙏 Extra Credits
 
 <a href="https://github.com/Teproanyx">Teproanyx</a>
-: Makefile
+: Safe Input and Makefile
