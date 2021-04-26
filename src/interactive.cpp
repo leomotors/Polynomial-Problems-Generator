@@ -9,6 +9,7 @@
 #include "utilsMethod.hpp"
 #include "generator.hpp"
 #include "grader.hpp"
+#include "performance.hpp"
 
 double testMode()
 {
@@ -45,6 +46,8 @@ double testMode()
     }
 
     std::cout << "Result: You scored " << score << " out of " << questions << "!\n"
+              << std::endl;
+    std::cout << "Difficulity of Test you've done : " << pp::diffFactor()
               << std::endl;
     return (double)score / questions;
 }
