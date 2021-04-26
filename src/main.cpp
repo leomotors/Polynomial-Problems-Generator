@@ -5,9 +5,7 @@
 #include <fstream>
 
 #include "polynomial.hpp"
-#include "polyrand.hpp"
 #include "generator.hpp"
-#include "grader.hpp"
 #include "utilsMethod.hpp"
 #include "SafeInput.hpp"
 #include "pSettings.hpp"

@@ -13,9 +13,9 @@
 double testMode()
 {
     int questions = tsi::getInt("Number of question: ");
-    int difficulity = tsi::getInt("Degree of Polynomial: ");
+    int pDegree = tsi::getInt("Degree of Polynomial: ");
 
-    if (difficulity < 2)
+    if (pDegree < 2)
     {
         std::cout << "WARNING: Polynomial degree must be at least 2!" << std::endl;
         return -1;
@@ -25,7 +25,7 @@ double testMode()
 
     for (int i = 1; i <= questions; i++)
     {
-        Polynomial res = PolyGenerator::random(difficulity);
+        Polynomial res = PolyGenerator::random(pDegree);
         std::cout << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
         std::string submission = tsi::getString("Your answer: ");
 
@@ -51,9 +51,9 @@ double testMode()
 
 int endlessMode()
 {
-    int difficulity = tsi::getInt("Degree of Polynomial: ");
+    int pDegree = tsi::getInt("Degree of Polynomial: ");
 
-    if (difficulity < 2)
+    if (pDegree < 2)
     {
         std::cout << "WARNING: Polynomial degree must be at least 2!" << std::endl;
         return -1;
@@ -63,7 +63,7 @@ int endlessMode()
     while (true)
     {
         std::cout << "CURRENT SCORE: " << score << std::endl;
-        Polynomial res = PolyGenerator::random(difficulity);
+        Polynomial res = PolyGenerator::random(pDegree);
         std::cout << "Solve " << res.printPoly() << " = 0" << std::endl;
         std::string submission = tsi::getString("Your answer: ");
 
@@ -92,7 +92,7 @@ int endlessMode()
 int timelimitMode()
 {
     int timelimit = tsi::getInt("Enter Time: ");
-    int difficulity = tsi::getInt("Enter Difficulity: ");
+    int pDegree = tsi::getInt("Enter Degree of Polynomial: ");
 
     if (timelimit < 1)
     {
@@ -100,7 +100,7 @@ int timelimitMode()
         return -1;
     }
 
-    if (difficulity < 2)
+    if (pDegree < 2)
     {
         std::cout << "WARNING: Polynomial degree must be at least 2!" << std::endl;
         return -1;
@@ -126,7 +126,7 @@ int timelimitMode()
         std::cout << "TIME LEFT: " << timeLeft << std::endl;
         std::cout << std::endl;
 
-        Polynomial res = PolyGenerator::random(difficulity);
+        Polynomial res = PolyGenerator::random(pDegree);
         std::cout << "Solve " << res.printPoly() << " = 0" << std::endl;
         std::string submission = tsi::getString("Your answer: ");
 
