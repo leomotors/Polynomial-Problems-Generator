@@ -209,7 +209,8 @@ int timelimitMode()
     double thisPP = pp::timepp(score, penalty / PENALTY_TIME, injuryTime, timelimit, pDegree);
 
     std::cout << "Average Difficulity of Test you've done : "
-              << pp::diffFactor(pDegree) << std::endl;
+              << pp::diffFactor(pDegree) << "\n"
+              << std::endl;
     std::cout << "Performance Point: " << thisPP << std::endl;
     return score;
 }
