@@ -31,7 +31,7 @@ namespace menu
                   << pSettings::getNumRange() << "]\n";
         std::cout << "[2] Set Denominator Random Range [Current: "
                   << pSettings::getDenomRange() << "]\n";
-        std::cout << "[3] Activate Cheat Mode [Current :"
+        std::cout << "[3] Activate Cheat Mode [Current : "
                   << (pSettings::cheatModeStatus()
                           ? "ON"
                           : "OFF")

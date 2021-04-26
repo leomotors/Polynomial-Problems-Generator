@@ -205,6 +205,7 @@ int timelimitMode()
         std::cout << "Your Score is 0\n"
                   << std::endl;
 
+    std::cout << "You answered wrong " << penalty / PENALTY_TIME << " questions." << std::endl;
     double thisPP = pp::timepp(score, penalty / PENALTY_TIME, injuryTime, timelimit, pDegree);
 
     std::cout << "Average Difficulity of Test you've done : "
