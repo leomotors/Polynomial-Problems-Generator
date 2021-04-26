@@ -87,7 +87,7 @@ void generateMode()
         return;
     }
 
-    if (ofile_name.size() || keyf_name.size())
+    if (!(ofile_name.size() && keyf_name.size()))
     {
         std::cout << "ERROR: File name can't be blank!" << std::endl;
         return;
