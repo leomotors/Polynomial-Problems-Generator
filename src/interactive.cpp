@@ -150,6 +150,7 @@ int timelimitMode()
                       << rootsToStr(PolyGenerator::getCurrRoots()) << "\n"
                       << std::endl;
             penalty += PENALTY_TIME;
+            lastIsCorrect = false;
         }
         std::cout << std::endl;
     }
