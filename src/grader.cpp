@@ -1,13 +1,20 @@
 #include <vector>
 #include <utility>
 #include <string>
-
+#include <iostream>
 #include "grader.hpp"
 
 #include "utilsMethod.hpp"
+#include "pSettings.hpp"
 
 bool isAnswer(std::vector<std::pair<int, int>> roots_dup, std::vector<std::string> submission)
 {
+    if (pSettings::cheatModeStatus() && (submission[0] == "MAFS" || submission[0] == "METH"))
+    {
+        std::cout << "Hey! That's cheating!" << std::endl;
+        return true;
+    }
+
     std::vector<std::pair<int, int>> roots = drop_dupl(roots_dup);
 
     if (roots.size() != submission.size())

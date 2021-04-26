@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <cstdlib>
 
 #include "interactive.hpp"
 #include "SafeInput.hpp"
@@ -10,6 +11,7 @@
 #include "generator.hpp"
 #include "grader.hpp"
 #include "performance.hpp"
+#include "pSettings.hpp"
 
 double testMode()
 {
@@ -55,6 +57,8 @@ double testMode()
 int endlessMode()
 {
     int pDegree = tsi::getInt("Degree of Polynomial: ");
+    int gachaFactor = 3;
+    int innerGachaFactor = 5;
 
     if (pDegree < 2)
     {
@@ -66,6 +70,8 @@ int endlessMode()
     while (true)
     {
         std::cout << "CURRENT SCORE: " << score << std::endl;
+        std::cout << "CURRENT DIFFICULITY: " << pp::diffFactor(pDegree) << std::endl;
+
         Polynomial res = PolyGenerator::random(pDegree);
         std::cout << "Solve " << res.printPoly() << " = 0" << std::endl;
         std::string submission = tsi::getString("Your answer: ");
@@ -75,6 +81,24 @@ int endlessMode()
         {
             std::cout << "CORRECT!" << std::endl;
             score++;
+
+            // * Adding Difficulity
+            if (std::rand() % 10 < gachaFactor) // * 30% Chance and increasing
+            {
+                gachaFactor = 3;
+                if (std::rand() % 100 < innerGachaFactor) // * 5% Chance and increasing
+                {
+                    innerGachaFactor = 5;
+                    pSettings::setDenomRange(pSettings::getDenomRange() + 1);
+                }
+                else
+                {
+                    innerGachaFactor += 3;
+                    pSettings::setNumRange(pSettings::getNumRange() * ((double)(std::rand() % 5) / 10 + 1));
+                }
+            }
+            else
+                gachaFactor += 1;
         }
         else
         {
@@ -84,10 +108,14 @@ int endlessMode()
                       << std::endl;
             std::cout << "Your Score is " << score << "\n"
                       << std::endl;
-            return score;
+            break;
         }
         std::cout << std::endl;
     }
+
+    std::cout << "Final Average Difficulity of you've reached : "
+              << pp::diffFactor(pDegree) << std::endl;
+    return score;
 }
 
 #define PENALTY_TIME 5
@@ -178,7 +206,7 @@ int timelimitMode()
                   << std::endl;
 
     double thisPP = pp::timepp(score, penalty / PENALTY_TIME, injuryTime, timelimit, pDegree);
-    
+
     std::cout << "Average Difficulity of Test you've done : "
               << pp::diffFactor(pDegree) << std::endl;
     std::cout << "Performance Point: " << thisPP << std::endl;

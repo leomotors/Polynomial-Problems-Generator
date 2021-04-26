@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "pSettings.hpp"
 #include "SafeInput.hpp"
@@ -9,6 +10,8 @@ namespace pSettings
 {
     int num_range = 20;
     int denom_range = 3;
+    bool cheatMode = false;
+
     void setNumRange(int nr)
     {
         if (nr < 2)
@@ -36,6 +39,11 @@ namespace pSettings
         return denom_range;
     }
 
+    bool cheatModeStatus()
+    {
+        return cheatMode;
+    }
+
     void page()
     {
         menu::settings();
@@ -50,6 +58,13 @@ namespace pSettings
         case 2:
             dr = tsi::getInt("Enter New Denominator Random Range: ");
             setDenomRange(dr);
+            break;
+        case 3:
+            cheatMode = true;
+            std::cout << "Cheat Mode Activated, To turn off: Restart Program"
+                      << "\n"
+                      << "Answer 'MAFS' or 'METH' to make any question correct!"
+                      << std::endl;
             break;
         case 0:
             return;

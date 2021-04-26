@@ -7,7 +7,7 @@ namespace pSettings
     void setDenomRange(int);
     int getNumRange();
     int getDenomRange();
-
+    bool cheatModeStatus();
     void page();
 }
 
