@@ -3,10 +3,11 @@
 #include "performance.hpp"
 
 #include "pSettings.hpp"
+#include "utilsMethod.hpp"
 
 namespace pp
 {
-    double diffFactor()
+    double diffFactor(int degree)
     {
         int dr = pSettings::getDenomRange();
         double denominatorFactor = std::min(std::max(1, 2 * (dr - 1)), 10) + std::sqrt(std::max(1, dr - 7)) - 1;
@@ -14,18 +15,18 @@ namespace pp
         int nr = pSettings::getNumRange();
         double numeratorFactor = std::sqrt(nr);
 
-        return denominatorFactor * numeratorFactor;
+        double degreeFactor = factorial(degree) / 2;
+        return denominatorFactor * numeratorFactor * degreeFactor;
     }
 
-    double timepp(int correct, int miss, int injurytime, int gameTime)
+    double timepp(int correct, int miss, int injurytime, int gameTime, int pDegree)
     {
-        double DiffFactor = diffFactor();
+        double DiffFactor = diffFactor(pDegree);
         double injuryTimePP = 0;
 
         double expectedScore = gameTime / DiffFactor;
 
         double answeredFactor = correct / expectedScore;
-
 
         if (injurytime > 0)
         {

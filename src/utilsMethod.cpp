@@ -69,3 +69,10 @@ std::vector<std::pair<int, int>> drop_dupl(std::vector<std::pair<int, int>> root
 
     return roots;
 }
+
+double factorial(int n)
+{
+    if (n == 1)
+        return 1.0;
+    return n * factorial(n - 1);
+}

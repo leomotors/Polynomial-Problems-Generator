@@ -47,8 +47,8 @@ double testMode()
 
     std::cout << "Result: You scored " << score << " out of " << questions << "!\n"
               << std::endl;
-    std::cout << "Difficulity of Test you've done : " << pp::diffFactor()
-              << std::endl;
+    std::cout << "Average Difficulity of Test you've done : "
+              << pp::diffFactor(pDegree) << std::endl;
     return (double)score / questions;
 }
 
@@ -177,8 +177,10 @@ int timelimitMode()
         std::cout << "Your Score is 0\n"
                   << std::endl;
 
-    double thisPP = pp::timepp(score, penalty / PENALTY_TIME, injuryTime, timelimit);
-
+    double thisPP = pp::timepp(score, penalty / PENALTY_TIME, injuryTime, timelimit, pDegree);
+    
+    std::cout << "Average Difficulity of Test you've done : "
+              << pp::diffFactor(pDegree) << std::endl;
     std::cout << "Performance Point: " << thisPP << std::endl;
     return score;
 }
