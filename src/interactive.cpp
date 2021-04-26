@@ -116,11 +116,14 @@ int timelimitMode()
 
     int score = 0;
     int penalty = 0;
+    bool lastIsCorrect = false;
+    bool hasInjuryTime;
     while (true)
     {
         int timeLeft = timelimit - TimeElapsed(start) - penalty;
         if (timeLeft <= 0)
         {
+            hasInjuryTime = (timeLeft == 0) ? false : true;
             std::cout << std::endl;
             break;
         }
@@ -138,6 +141,7 @@ int timelimitMode()
         {
             std::cout << "CORRECT!" << std::endl;
             score++;
+            lastIsCorrect = true;
         }
         else
         {
@@ -153,13 +157,27 @@ int timelimitMode()
     std::cout << "TIME'S UP!" << std::endl;
     std::cout << "Within time of " << timelimit << " secs. ";
 
+    int injuryTime = 0;
     if (score > 0)
-        std::cout << "Your Score is " << score - 1 << " +1("
-                  << TimeElapsed(start) - timelimit + penalty << " secs)\n"
-                  << std::endl;
+    {
+        if (lastIsCorrect && hasInjuryTime)
+        {
+            injuryTime = TimeElapsed(start) - timelimit + penalty;
+            std::cout << "Your Score is " << score - 1 << " +1("
+                      << injuryTime << " secs)\n"
+                      << std::endl;
+        }
+        else
+            std::cout << "Your Score is " << score << "\n"
+                      << std::endl;
+    }
+
     else
         std::cout << "Your Score is 0\n"
                   << std::endl;
 
+    double thisPP = pp::timepp(score, penalty / PENALTY_TIME, injuryTime, timelimit);
+
+    std::cout << "Performance Point: " << thisPP << std::endl;
     return score;
 }

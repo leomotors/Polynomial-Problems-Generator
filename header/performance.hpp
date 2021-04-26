@@ -1,3 +1,4 @@
 namespace pp {
-    int diffFactor();
+    double diffFactor();
+    double timepp(int, int, int,int);
 }
