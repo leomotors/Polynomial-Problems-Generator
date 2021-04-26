@@ -91,11 +91,8 @@ int endlessMode()
 
 int timelimitMode()
 {
-    int timelimit, difficulity;
-    std::cout << "Enter Time: ";
-    std::cin >> timelimit;
-    std::cout << "Enter Difficulity: ";
-    std::cin >> difficulity;
+    int timelimit = tsi::getInt("Enter Time: ");
+    int difficulity = tsi::getInt("Enter Difficulity: ");
 
     if (timelimit < 1)
     {
