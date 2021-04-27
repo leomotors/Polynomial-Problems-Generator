@@ -8,6 +8,7 @@ namespace pSettings
     int getNumRange();
     int getDenomRange();
     bool cheatModeStatus();
+    bool verboseModeStatus();
     void page();
 }
 

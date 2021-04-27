@@ -36,6 +36,11 @@ namespace menu
                           ? "ON"
                           : "OFF")
                   << "]\n";
+        std::cout << "[4] Activate Verbose Mode [Current : "
+                  << (pSettings::verboseModeStatus()
+                          ? "ON"
+                          : "OFF")
+                  << "]\n";
         std::cout << "[0] Back\n";
         std::cout << std::endl;
     }

@@ -11,6 +11,7 @@ namespace pSettings
     int num_range = 20;
     int denom_range = 3;
     bool cheatMode = false;
+    bool verboseMode = false;
 
     void setNumRange(int nr)
     {
@@ -44,6 +45,11 @@ namespace pSettings
         return cheatMode;
     }
 
+    bool verboseModeStatus()
+    {
+        return verboseMode;
+    }
+
     void page()
     {
         menu::settings();
@@ -64,6 +70,13 @@ namespace pSettings
             std::cout << "Cheat Mode Activated, To turn off: Restart Program"
                       << "\n"
                       << "Answer 'MAFS' or 'METH' to make any question correct!"
+                      << std::endl;
+            break;
+        case 4:
+            verboseMode = true;
+            std::cout << "Verbose Mode Activated, To turn off: Restart Program"
+                      << "\n"
+                      << "Verbose Mode will express every detail of your PP Factor in time mode!"
                       << std::endl;
             break;
         case 0:

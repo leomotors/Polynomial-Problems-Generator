@@ -1,5 +1,7 @@
 #include <algorithm>
 #include <cmath>
+#include <iostream>
+
 #include "performance.hpp"
 
 #include "pSettings.hpp"
@@ -23,6 +25,7 @@ namespace pp
     {
         double DiffFactor = diffFactor(pDegree);
         double injuryTimePP = 0;
+        int totalQuestion = correct + miss;
 
         double expectedScore = gameTime / DiffFactor;
 
@@ -36,7 +39,8 @@ namespace pp
             injuryTimePP = 0.5 * injuryPPFactor * DiffFactor * answeredFactor;
         }
 
-        double missPenalty = std::pow(0.95, (double)miss * expectedScore / correct);
+        double missPenalty = (miss < 1) ? 1
+                                        : 0.975 * std::pow((1 - std::pow((double)miss / (totalQuestion), 0.7)), (miss / (totalQuestion - miss)));
 
         double e2 = 2.717 * 2.717;
         double gameTimeFactor = std::max(1.00, std::log((gameTime / 30.00) - 1 + e2) / std::log(e2));
@@ -44,6 +48,16 @@ namespace pp
         double BasePP = correct * DiffFactor;
 
         double totalPP = BasePP * answeredFactor * gameTimeFactor * missPenalty + injuryTimePP;
+
+        if (pSettings::verboseModeStatus())
+            std::cout << "\nVerbose:"
+                      << "\n"
+                      << "Base PP: " << BasePP << "\n"
+                      << "Answer Factor: " << answeredFactor << "\n"
+                      << "Game Time Factor: " << gameTimeFactor << "\n"
+                      << "Miss Penalty: " << missPenalty << "\n"
+                      << "Bonus PP from Injury Time Question: " << injuryTimePP
+                      << std::endl;
 
         return totalPP;
     }
