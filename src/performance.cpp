@@ -34,9 +34,10 @@ namespace pp
         if (injurytime > 0)
         {
             correct -= 1;
+            answeredFactor = correct / expectedScore;
             double bonustime = (double)std::max(1, 10 - injurytime);
             double injuryPPFactor = std::sqrt((bonustime / 10.00) + std::pow(3.00, -3.00 * bonustime));
-            injuryTimePP = 0.5 * injuryPPFactor * DiffFactor * answeredFactor;
+            injuryTimePP = 0.5 * injuryPPFactor * std::sqrt(DiffFactor) * answeredFactor;
         }
 
         double missPenalty = (miss < 1) ? 1
@@ -45,15 +46,19 @@ namespace pp
         double e2 = 2.717 * 2.717;
         double gameTimeFactor = std::max(1.00, std::log((gameTime / 30.00) - 1 + e2) / std::log(e2));
 
-        double BasePP = correct * DiffFactor;
+        double BasePP = answeredFactor;
 
-        double totalPP = BasePP * answeredFactor * gameTimeFactor * missPenalty + injuryTimePP;
+        double DifficultyFactor = std::log(DiffFactor) / std::log(e2);
+        DifficultyFactor = (DifficultyFactor < 1) ? std::cbrt(DifficultyFactor)
+                                                  : std::pow(DifficultyFactor, 1.35);
+
+        double totalPP = BasePP * gameTimeFactor * missPenalty + injuryTimePP;
 
         if (pSettings::verboseModeStatus())
             std::cout << "\nVerbose:"
                       << "\n"
                       << "Base PP: " << BasePP << "\n"
-                      << "Answer Factor: " << answeredFactor << "\n"
+                      << "Difficulty Factor: " << DifficultyFactor << "\n"
                       << "Game Time Factor: " << gameTimeFactor << "\n"
                       << "Miss Penalty: " << missPenalty << "\n"
                       << "Bonus PP from Injury Time Question: " << injuryTimePP
