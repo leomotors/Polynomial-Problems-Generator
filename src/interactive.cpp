@@ -211,6 +211,10 @@ int timelimitMode()
     std::cout << "Average Difficulity of Test you've done : "
               << pp::diffFactor(pDegree) << "\n"
               << std::endl;
-    std::cout << "Performance Point: " << thisPP << std::endl;
+    std::cout << "Performance Point: " << thisPP
+              << (pSettings::cheatModeStatus()
+                      ? " (With Cheat Mode On)"
+                      : "")
+              << std::endl;
     return score;
 }
