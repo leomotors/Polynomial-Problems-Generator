@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <fstream>
+#include <sstream>
 
 #include "polynomial.hpp"
 #include "generator.hpp"
@@ -15,11 +16,18 @@
 void printMainMenu();
 void interactiveMode();
 void generateMode();
+bool argumentMode(int, char *[]);
 
-int main()
+int main(int argc, char *argv[])
 {
     std::srand(std::time(0));
     int choice;
+
+    if (argc > 1)
+    {
+        return argumentMode(argc, argv);
+    }
+
     while (true)
     {
         menu::mainMenu();
@@ -113,4 +121,57 @@ void generateMode()
 
     std::cout << "Successfully generated both files" << std::endl;
     OutFile.close();
+    KeyFile.close();
+}
+
+bool argumentMode(int argc, char *argv[])
+{
+    // * args : ./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] [COUNT] [FNAMEPROB] [FNAMEKEY]
+    if (argc != 7)
+    {
+        std::cout << "Unknown Argument" << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    std::stringstream nr(argv[1]);
+    std::stringstream dr(argv[2]);
+    std::stringstream degree(argv[3]);
+    std::stringstream count(argv[4]);
+
+    int nr_int = 0;
+    nr >> nr_int;
+    pSettings::setNumRange(nr_int);
+
+    int dr_int = 0;
+    dr >> dr_int;
+    pSettings::setDenomRange(dr_int);
+
+    int degree_int = 0;
+    degree >> degree_int;
+
+    int count_int = 0;
+    count >> count_int;
+
+    std::string outfileloc = "./generated/";
+    outfileloc += argv[5];
+    outfileloc += ".txt";
+
+    std::string keyfileloc = "./generated/";
+    keyfileloc += argv[6];
+    keyfileloc += ".txt";
+
+    std::ofstream outfile(outfileloc), keyfile(keyfileloc);
+
+    for (int i = 1; i <= count_int; i++)
+    {
+        Polynomial res = PolyGenerator::random(degree_int);
+        outfile << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
+        keyfile << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
+    }
+
+    std::cout << "Successfully generated both files" << std::endl;
+    outfile.close();
+    keyfile.close();
+
+    return EXIT_SUCCESS;
 }

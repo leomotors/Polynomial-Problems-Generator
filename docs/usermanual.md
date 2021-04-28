@@ -15,7 +15,13 @@ Read Player Manual
 
 ## Generator Mode
 
-Argument: Output File name; Key File name; Polynomial Degree; Questions
+Enter the information program wants and done!
+
+For Fast Commandline Access, this is syntax:
+
+```
+./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] [COUNT] [FNAMEPROB] [FNAMEKEY]
+```
 
 ## Settings
 
