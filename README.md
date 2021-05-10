@@ -44,4 +44,4 @@ Note: This is in Generator Mode, there is much more in interactive Mode where it
 10) Solve 6x^2 - 11x + 4 = 0
 ```
 
-<img src="https://github.com/Leomotors/Polynomial-Problems-Generator/blob/main/assets/mafs.jpg" width=500>
+<img src="https://github.com/Leomotors/Polynomial-Problems-Generator/blob/1.2.1/assets/mafs.jpg" width=500>
