@@ -9,6 +9,9 @@
 
 namespace pp
 {
+    double e1t5 = std::pow(2.717, 1.5);
+    double e2 = 2.717 * 2.717;
+    
     double diffFactor(int degree)
     {
         int dr = pSettings::getDenomRange();
@@ -31,35 +34,34 @@ namespace pp
         }
 
         double DiffFactor = diffFactor(pDegree);
-        double injuryTimePP = 0;
+
         int totalQuestion = correct + miss;
 
         double expectedScore = gameTime / DiffFactor;
 
         double answeredFactor = correct / expectedScore;
+        double BasePP = answeredFactor * 2;
 
-        double e2 = 2.717 * 2.717;
         double DiffBonus = std::log(DiffFactor) / std::log(e2);
         DiffBonus = (DiffBonus < 1) ? std::cbrt(DiffBonus)
                                     : std::pow(DiffBonus, 1.35);
-        double gameTimeFactor = std::max(1.00, std::log((gameTime / 15.00) - 1 + e2) / std::log(e2));
+        double gameTimeFactor = std::log((gameTime / 45.00) - 1 + e1t5) / std::log(e1t5);
 
+        double injuryPPFactor = 0;
         if (injurytime > 0)
         {
             correct -= 1;
             answeredFactor = correct / expectedScore;
             double bonustime = (double)std::max(1, 10 - injurytime);
-            double injuryPPFactor = std::sqrt((bonustime / 10.00) + std::pow(3.00, -3.00 * bonustime));
-            injuryTimePP = injuryPPFactor * DiffBonus * answeredFactor / std::pow(correct, 1.5);
+            injuryPPFactor = std::sqrt((bonustime / 10.00) + std::pow(3.00, -3.00 * bonustime)) * std::pow(gameTimeFactor, 3.0) / 2.00;
         }
 
         double missPenalty = (miss < 1) ? 1
                                         : 0.975 * std::pow((1 - std::pow((double)miss / (totalQuestion), 0.7)), (miss / (totalQuestion - miss)));
 
-        double BasePP = answeredFactor * 2;
-
-        double totalPP = BasePP * DiffBonus * gameTimeFactor * missPenalty + injuryTimePP;
-
+        double totalBasePP = BasePP * DiffBonus * gameTimeFactor * missPenalty;
+        double injuryPPBonus = injuryPPFactor * totalBasePP / std::pow(correct, 0.93);
+        double totalPP = totalBasePP + injuryPPBonus;
         if (pSettings::verboseModeStatus())
             std::cout << "\nVerbose:"
                       << "\n"
@@ -67,7 +69,7 @@ namespace pp
                       << "Difficulty Bonus: " << DiffBonus << "\n"
                       << "Game Time Factor: " << gameTimeFactor << "\n"
                       << "Miss Penalty: " << missPenalty << "\n"
-                      << "Bonus PP from Injury Time Question: " << injuryTimePP
+                      << "Bonus PP from Injury Time Question: " << injuryPPBonus
                       << std::endl;
 
         return totalPP;

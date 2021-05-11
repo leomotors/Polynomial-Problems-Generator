@@ -125,9 +125,9 @@ int timelimitMode()
     int timelimit = tsi::getInt("Enter Time: ");
     int pDegree = tsi::getInt("Enter Degree of Polynomial: ");
 
-    if (timelimit < 10)
+    if (timelimit < 30)
     {
-        std::cout << "WARNING: Too Small Time!" << std::endl;
+        std::cout << "WARNING: Too Small Time! Time must be at least 30 secs!" << std::endl;
         return -1;
     }
 
