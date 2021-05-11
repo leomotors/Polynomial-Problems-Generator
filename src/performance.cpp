@@ -23,6 +23,13 @@ namespace pp
 
     double timepp(int correct, int miss, int injurytime, int gameTime, int pDegree)
     {
+        if (correct == 0 || (correct <= 1 && injurytime > 0))
+        {
+            if (pSettings::verboseModeStatus())
+                std::cout << "\nVerbose: There is no correct answer during game, so no score." << std::endl;
+            return 0;
+        }
+
         double DiffFactor = diffFactor(pDegree);
         double injuryTimePP = 0;
         int totalQuestion = correct + miss;
@@ -43,7 +50,7 @@ namespace pp
             answeredFactor = correct / expectedScore;
             double bonustime = (double)std::max(1, 10 - injurytime);
             double injuryPPFactor = std::sqrt((bonustime / 10.00) + std::pow(3.00, -3.00 * bonustime));
-            injuryTimePP = injuryPPFactor * DiffBonus * answeredFactor;
+            injuryTimePP = injuryPPFactor * DiffBonus * answeredFactor / std::pow(correct, 1.5);
         }
 
         double missPenalty = (miss < 1) ? 1
