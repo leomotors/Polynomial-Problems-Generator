@@ -11,7 +11,7 @@ namespace pp
 {
     double e1t5 = std::pow(2.717, 1.5);
     double e2 = 2.717 * 2.717;
-    
+
     double diffFactor(int degree)
     {
         int dr = pSettings::getDenomRange();
@@ -24,7 +24,7 @@ namespace pp
         return denominatorFactor * numeratorFactor * degreeFactor;
     }
 
-    double timepp(int correct, int miss, int injurytime, int gameTime, int pDegree)
+    double performanceCalc(int correct, int miss, int injurytime, int gameTime, int pDegree, bool considerGameTime)
     {
         if (correct == 0 || (correct <= 1 && injurytime > 0))
         {
@@ -45,7 +45,12 @@ namespace pp
         double DiffBonus = std::log(DiffFactor) / std::log(e2);
         DiffBonus = (DiffBonus < 1) ? std::cbrt(DiffBonus)
                                     : std::pow(DiffBonus, 1.35);
-        double gameTimeFactor = std::log((gameTime / 45.00) - 1 + e1t5) / std::log(e1t5);
+
+        double gameTimeFactor;
+        if (considerGameTime)
+            gameTimeFactor = std::log((gameTime / 45.00) - 1 + e1t5) / std::log(e1t5);
+        else
+            gameTimeFactor = 1.00;
 
         double injuryPPFactor = 0;
         if (injurytime > 0)

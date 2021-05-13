@@ -25,6 +25,8 @@ double testMode()
     }
 
     int score = 0;
+    int wrong = 0;
+    const std::time_t start = std::time(nullptr);
 
     for (int i = 1; i <= questions; i++)
     {
@@ -43,14 +45,23 @@ double testMode()
             std::cout << "YOU SUCK BLYAT!" << std::endl;
             std::cout << "CORRECT IS "
                       << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
+            wrong++;
         }
         std::cout << std::endl;
     }
+    const std::time_t end = std::time(nullptr);
+    int time_used = end - start;
 
-    std::cout << "Result: You scored " << score << " out of " << questions << "!\n"
+    double performancePoint = pp::performanceCalc(score, wrong, 0, time_used, pDegree, false);
+
+    std::cout << "\nResult: You scored " << score << " out of " << questions << "!\n"
               << std::endl;
-    std::cout << "Average Difficulity of Test you've done : "
-              << pp::diffFactor(pDegree) << std::endl;
+    std::cout << "Performance Point: "
+              << performancePoint
+              << std::endl;
+    std::cout
+        << "Average Difficulity of Test you've done : "
+        << pp::diffFactor(pDegree) << std::endl;
     return (double)score / questions;
 }
 
@@ -206,7 +217,7 @@ int timelimitMode()
                   << std::endl;
 
     std::cout << "You answered wrong " << penalty / PENALTY_TIME << " questions." << std::endl;
-    double thisPP = pp::timepp(score, penalty / PENALTY_TIME, injuryTime, timelimit, pDegree);
+    double thisPP = pp::performanceCalc(score, penalty / PENALTY_TIME, injuryTime, timelimit, pDegree, true);
 
     std::cout << "Average Difficulity of Test you've done : "
               << pp::diffFactor(pDegree) << "\n"
