@@ -165,7 +165,7 @@ bool argumentMode(int argc, char *argv[])
     for (int i = 1; i <= count_int; i++)
     {
         Polynomial res = PolyGenerator::random(degree_int);
-        outfile << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
+        outfile << i << ") Solve " << res.printPoly(true) << " = 0" << std::endl;
         keyfile << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
     }
 
