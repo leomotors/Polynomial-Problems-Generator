@@ -5,6 +5,8 @@
 
 #include "polynomial.hpp"
 
+#include "unicode.hpp"
+
 Polynomial::Polynomial()
 {
     this->degree = 0;
@@ -42,8 +44,8 @@ std::string Polynomial::printPoly()
         resultstr += std::to_string(term_list[0].first);
     if (term_list[0].second)
     {
-        resultstr += "x^";
-        resultstr += std::to_string(term_list[0].second);
+        resultstr += "x";
+        resultstr += uni::getSS(term_list[0].second);
     }
 
     int term_count = term_list.size();
@@ -56,14 +58,10 @@ std::string Polynomial::printPoly()
             resultstr += " - ";
         if (std::abs(term.first) != 1 || term.second == 0)
             resultstr += std::to_string(std::abs(term.first));
-        if (term.second > 1)
-        {
-            resultstr += "x^";
-            resultstr += std::to_string(term.second);
-        }
-        else if (term.second == 1)
+        if (term.second >= 1)
         {
             resultstr += "x";
+            resultstr += uni::getSS(term.second);
         }
     }
 
