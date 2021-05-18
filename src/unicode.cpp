@@ -20,11 +20,10 @@ namespace uni
         if (n <= 1)
             return "";
 
+#ifndef _WIN32
         if (n < 10)
-        {
             return dict[n];
-        }
-        else
-            return std::to_string(n);
+#endif
+        return std::to_string(n);
     }
 }
