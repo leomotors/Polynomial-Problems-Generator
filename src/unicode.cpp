@@ -5,6 +5,12 @@
 
 namespace uni
 {
+#if defined(_WIN32)
+    bool isWindows = true;
+#else
+    bool isWindows = false;
+#endif
+
     std::unordered_map<int, std::string> dict{
         {2, "²"},
         {3, "³"},
@@ -15,15 +21,14 @@ namespace uni
         {8, "⁸"},
         {9, "⁹"}};
 
-    std::string getSS(int n)
+    std::string getSS(int n, bool ignoreCMDIncompatibility)
     {
         if (n <= 1)
             return "";
 
-#ifndef _WIN32
-        if (n < 10)
+        if (n < 10 && (!isWindows || ignoreCMDIncompatibility))
             return dict[n];
-#endif
+
         return std::to_string(n);
     }
 }

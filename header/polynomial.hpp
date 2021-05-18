@@ -12,7 +12,7 @@ public:
     Polynomial();
     Polynomial(std::vector<int>);
     void update();
-    std::string printPoly();
+    std::string printPoly(bool ignoreCMDIncompatibility = false);
     Polynomial operator+(const Polynomial &);
     Polynomial operator*(const Polynomial &);
 };

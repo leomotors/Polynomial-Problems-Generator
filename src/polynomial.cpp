@@ -26,7 +26,7 @@ void Polynomial::update()
     }
 }
 
-std::string Polynomial::printPoly()
+std::string Polynomial::printPoly(bool ignoreCMDIncompatibility)
 {
     int max_degree = this->degree;
     std::string resultstr;
@@ -45,7 +45,7 @@ std::string Polynomial::printPoly()
     if (term_list[0].second)
     {
         resultstr += "x";
-        resultstr += uni::getSS(term_list[0].second);
+        resultstr += uni::getSS(term_list[0].second, ignoreCMDIncompatibility);
     }
 
     int term_count = term_list.size();
@@ -61,7 +61,7 @@ std::string Polynomial::printPoly()
         if (term.second >= 1)
         {
             resultstr += "x";
-            resultstr += uni::getSS(term.second);
+            resultstr += uni::getSS(term.second, ignoreCMDIncompatibility);
         }
     }
 
