@@ -115,7 +115,7 @@ void generateMode()
     for (int i = 1; i <= T; i++)
     {
         Polynomial res = PolyGenerator::random(difficulity);
-        OutFile << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
+        OutFile << i << ") Solve " << res.printPoly(true) << " = 0" << std::endl;
         KeyFile << "Key of #" << i << " : " << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
     }
 

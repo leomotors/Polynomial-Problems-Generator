@@ -12,6 +12,8 @@ namespace uni
 #endif
 
     std::unordered_map<int, std::string> dict{
+        {0, "⁰"},
+        {1, "¹"},
         {2, "²"},
         {3, "³"},
         {4, "⁴"},
@@ -26,8 +28,14 @@ namespace uni
         if (n <= 1)
             return "";
 
-        if (n < 10 && (!isWindows || ignoreCMDIncompatibility))
-            return dict[n];
+        if (!isWindows || ignoreCMDIncompatibility)
+        {
+            std::string numstr;
+            std::string nums = std::to_string(n);
+            for (char s : nums)
+                numstr.append(dict[s - '0']);
+            return numstr;
+        }
 
         return "^" + std::to_string(n);
     }
