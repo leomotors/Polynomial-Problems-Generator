@@ -29,6 +29,6 @@ namespace uni
         if (n < 10 && (!isWindows || ignoreCMDIncompatibility))
             return dict[n];
 
-        return std::to_string(n);
+        return "^" + std::to_string(n);
     }
 }
