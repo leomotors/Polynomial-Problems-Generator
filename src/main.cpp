@@ -129,7 +129,8 @@ bool argumentMode(int argc, char *argv[])
     // * args : ./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] [COUNT] [FNAMEPROB] [FNAMEKEY]
     if (argc != 7)
     {
-        std::cout << "Unknown Argument" << std::endl;
+        std::cout << "Syntax: ./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] "
+                  << "[COUNT][FNAMEPROB][FNAMEKEY] " << std::endl;
         return EXIT_FAILURE;
     }
 
