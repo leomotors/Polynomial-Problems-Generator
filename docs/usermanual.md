@@ -29,6 +29,6 @@ Numerator Random Range [Default: 20]
 
 * Random Range of Root's Numerator
 
-Denominator Random Range [Default: 3]
+Denominator Random Range [Default: 1]
 
 * Random Range of Root's Denominator
