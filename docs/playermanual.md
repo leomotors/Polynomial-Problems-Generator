@@ -26,20 +26,20 @@ Until you answer wrong, the game goes on and on!
 
 You have limited time to answer at most question as possible!
 
-However since this is C++ and I don't wanna dig deep into async stuff there is
+However since this is C++ and I don't wanna dig deep into async stuff so there is
 extra injury time for you until you finish last question!
 
 ## How to Answer
 
-You don't need to answer them in any order, but you must answer all of them.
+You don't need to answer them in order, but you must answer all of them.
 
 Since you are solving the equation, duplicate answer will be result in wrong.
 
-It is guarantee that all answer is real.
+**It is guarantee that all answer is real.**
 
 To answer, enter all roots seperated by space bar.
 
-If the answer is fraction answer it in form of a/b where a,b is integer, b > 0
+If the answer is fraction answer it in form of a/b where a, b is the lowest factor form.
 
 ### Example
 
