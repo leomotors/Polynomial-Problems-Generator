@@ -4,15 +4,21 @@ Factoring Polynomial Exercise Generator
 
 Also works as an interactive program to play!
 
-## Point of this program
+## 🗺️ Origin of this Project
 
-R U TRIED OF Your Smol Bro cannot factor polynomial?
+`R U TRIED OF Your Smol Bro cannot factor polynomial?`
 
-Send this program to them! (compile first)
+Yes! I am, factorial polynomial is fundamental skills that you need to survive high school math.
 
-## To Compile
+So this project is created to help practice everyone!
+
+## 📜 To Compile
 
 ```>> make```
+
+**Note**: Make is needed for this. 
+
+Compilation tested on gcc 9.3.0 in Ubuntu 20.04 and gcc 8.1.0 in Windows (MinGW posix)
 
 ## 📚 Documentation
 
