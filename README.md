@@ -1,12 +1,14 @@
 # Polynomial Problems Generator
 
-Factoring Polynomial Exercise Generator
+Factoring Polynomial Exercise Generator for everyone to practice their `meth` skill!
 
-Also works as an interactive program to play!
+In form of interactive program to play or generator to throw questions for you!
 
 ## 🗺️ Origin of this Project
 
-`R U TRIED OF Your Smol Bro cannot factor polynomial?`
+> R U TRIED OF Your Smol Bro cannot factor polynomial?
+
+> TRIED that they cannot do just simple fundamental task?
 
 Yes! I am, factorial polynomial is fundamental skills that you need to survive high school math.
 
@@ -33,7 +35,7 @@ Player Manual</a>
 <a href="https://github.com/Teproanyx">Teproanyx</a>
 : Safe Input and Makefile
 
-## Program Example
+## 🔢 Program Example
 
 Note: This is in Generator Mode, there is much more in interactive Mode where it is like you're playing a game!
 
