@@ -25,7 +25,7 @@ std::vector<std::string> splitStr(std::string str, char spliter)
     return splited_str;
 }
 
-std::string rootsToStr(std::vector<std::pair<int, int>> roots_dup)
+std::string rootsToStr(std::vector<std::pair<int, int>> roots_dup, bool _JSON)
 {
     std::string result_str;
 
@@ -35,13 +35,19 @@ std::string rootsToStr(std::vector<std::pair<int, int>> roots_dup)
     for (int i = 0; i < roots_count; i++)
     {
         std::pair<int, int> root = roots[i];
+
+        if (_JSON)
+            result_str += "\"";
         result_str += std::to_string(root.first);
         if (root.second != 1)
         {
             result_str += "/";
             result_str += std::to_string(root.second);
         }
-        result_str += ", ";
+        if (_JSON)
+            result_str += "\", ";
+        else
+            result_str += ", ";
     }
     result_str.pop_back();
     result_str.pop_back();

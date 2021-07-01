@@ -4,6 +4,7 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
+#include <cstring>
 
 #include "polynomial.hpp"
 #include "generator.hpp"
@@ -130,7 +131,7 @@ bool argumentMode(int argc, char *argv[])
     if (argc != 7)
     {
         std::cout << "Syntax: ./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] "
-                  << "[COUNT][FNAMEPROB][FNAMEKEY] " << std::endl;
+                  << "[COUNT] [FNAMEPROB] [FNAMEKEY/__JSON_MODE__]" << std::endl;
         return EXIT_FAILURE;
     }
 
@@ -153,26 +154,54 @@ bool argumentMode(int argc, char *argv[])
     int count_int = 0;
     count >> count_int;
 
-    std::string outfileloc = "./generated/";
-    outfileloc += argv[5];
-    outfileloc += ".txt";
-
-    std::string keyfileloc = "./generated/";
-    keyfileloc += argv[6];
-    keyfileloc += ".txt";
-
-    std::ofstream outfile(outfileloc), keyfile(keyfileloc);
-
-    for (int i = 1; i <= count_int; i++)
+    if (strcmp(argv[6], "__JSON_MODE__"))
     {
-        Polynomial res = PolyGenerator::random(degree_int);
-        outfile << i << ") Solve " << res.printPoly(true) << " = 0" << std::endl;
-        keyfile << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
-    }
+        std::string outfileloc = "./generated/";
+        outfileloc += argv[5];
+        outfileloc += ".txt";
 
-    std::cout << "Successfully generated both files" << std::endl;
-    outfile.close();
-    keyfile.close();
+        std::string keyfileloc = "./generated/";
+        keyfileloc += argv[6];
+        keyfileloc += ".txt";
+
+        std::ofstream outfile(outfileloc), keyfile(keyfileloc);
+
+        for (int i = 1; i <= count_int; i++)
+        {
+            Polynomial res = PolyGenerator::random(degree_int);
+            outfile << i << ") Solve " << res.printPoly(true) << " = 0" << std::endl;
+            keyfile << rootsToStr(PolyGenerator::getCurrRoots()) << std::endl;
+        }
+
+        std::cout << "Successfully generated both files" << std::endl;
+        outfile.close();
+        keyfile.close();
+    }
+    else
+    {
+        std::string outfileloc = argv[5];
+        outfileloc += ".json";
+
+        std::ofstream outfile(outfileloc);
+
+        outfile << "{\n";
+        outfile << "\"questions\": {" << std::endl;
+
+        for (int i = 1; i <= count_int; i++)
+        {
+            Polynomial res = PolyGenerator::random(degree_int);
+            outfile << "\"" << res.printPoly(true) << "\": " << std::endl;
+            outfile << "[" << rootsToStr(PolyGenerator::getCurrRoots(), true)
+                    << ((i == count_int)
+                            ? "]"
+                            : "],")
+                    << std::endl;
+        }
+
+        outfile << "}\n}" << std::endl;
+
+        std::cout << "JSON OUTPUT SUCCESS" << std::endl;
+    }
 
     return EXIT_SUCCESS;
 }
