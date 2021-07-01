@@ -20,8 +20,11 @@ Enter the information program wants and done!
 For Fast Commandline Access, this is syntax:
 
 ```
-./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] [COUNT] [FNAMEPROB] [FNAMEKEY]
+./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] [COUNT] [FNAMEPROB] [FNAMEKEY/__JSON_MODE__]
 ```
+
+If Key File Name is given "\_\_JSON_MODE\_\_" the file will output in JSON Mode
+in current directory instead.
 
 ## Settings
 

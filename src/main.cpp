@@ -127,7 +127,7 @@ void generateMode()
 
 bool argumentMode(int argc, char *argv[])
 {
-    // * args : ./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] [COUNT] [FNAMEPROB] [FNAMEKEY]
+    // * args : ./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] [COUNT] [FNAMEPROB] [FNAMEKEY/__JSON_MODE__]
     if (argc != 7)
     {
         std::cout << "Syntax: ./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] "
