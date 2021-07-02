@@ -24,7 +24,7 @@ For Fast Commandline Access, this is syntax:
 ```
 
 If Key File Name is given "\_\_JSON_MODE\_\_" the file will output in JSON Mode
-in current directory instead.
+in stdout instead (FNAMEPROB is ignored).
 
 ## Settings
 
