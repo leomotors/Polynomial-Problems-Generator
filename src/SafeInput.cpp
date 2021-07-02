@@ -112,7 +112,7 @@ namespace tsi
         buffer = (char *)realloc(buffer, strlen(buffer) + 1);
         memoryError(buffer);
 
-        std::string iString = buffer;
+        std::string iString{buffer};
         free(buffer);
         return iString;
     }
