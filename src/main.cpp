@@ -179,28 +179,21 @@ bool argumentMode(int argc, char *argv[])
     }
     else
     {
-        std::string outfileloc = argv[5];
-        outfileloc += ".json";
-
-        std::ofstream outfile(outfileloc);
-
-        outfile << "{\n";
-        outfile << "\"questions\": {" << std::endl;
+        std::cout << "{\n";
+        std::cout << "\"questions\": {" << std::endl;
 
         for (int i = 1; i <= count_int; i++)
         {
             Polynomial res = PolyGenerator::random(degree_int);
-            outfile << "\"" << res.printPoly(true) << "\": " << std::endl;
-            outfile << "[" << rootsToStr(PolyGenerator::getCurrRoots(), true)
+            std::cout << "\"" << res.printPoly(true) << "\": " << std::endl;
+            std::cout << "[" << rootsToStr(PolyGenerator::getCurrRoots(), true)
                     << ((i == count_int)
                             ? "]"
                             : "],")
                     << std::endl;
         }
 
-        outfile << "}\n}" << std::endl;
-
-        std::cout << "JSON OUTPUT SUCCESS" << std::endl;
+        std::cout << "}\n}" << std::endl;
     }
 
     return EXIT_SUCCESS;
