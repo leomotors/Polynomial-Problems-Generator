@@ -13,6 +13,7 @@
 #include "pSettings.hpp"
 #include "menu.hpp"
 #include "interactive.hpp"
+#include "performance.hpp"
 
 void printMainMenu();
 void interactiveMode();
@@ -180,6 +181,8 @@ bool argumentMode(int argc, char *argv[])
     else
     {
         std::cout << "{\n";
+        std::cout << "\"difficulty\": " << pp::diffFactor(degree_int)
+                  << "," << std::endl;
         std::cout << "\"questions\": {" << std::endl;
 
         for (int i = 1; i <= count_int; i++)
@@ -187,10 +190,10 @@ bool argumentMode(int argc, char *argv[])
             Polynomial res = PolyGenerator::random(degree_int);
             std::cout << "\"" << res.printPoly(true) << "\": " << std::endl;
             std::cout << "[" << rootsToStr(PolyGenerator::getCurrRoots(), true)
-                    << ((i == count_int)
-                            ? "]"
-                            : "],")
-                    << std::endl;
+                      << ((i == count_int)
+                              ? "]"
+                              : "],")
+                      << std::endl;
         }
 
         std::cout << "}\n}" << std::endl;
