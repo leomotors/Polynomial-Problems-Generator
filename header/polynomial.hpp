@@ -8,9 +8,9 @@ class Polynomial
 {
 public:
     int degree;
-    std::vector<int> coef;
+    std::vector<int64_t> coef;
     Polynomial();
-    Polynomial(std::vector<int>);
+    Polynomial(std::vector<int64_t>);
     void update();
     std::string printPoly(bool ignoreCMDIncompatibility = false);
     Polynomial operator+(const Polynomial &);

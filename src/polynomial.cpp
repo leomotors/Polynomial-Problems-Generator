@@ -12,7 +12,7 @@ Polynomial::Polynomial()
     this->degree = 0;
 }
 
-Polynomial::Polynomial(std::vector<int> initArr)
+Polynomial::Polynomial(std::vector<int64_t> initArr)
 {
     this->degree = initArr.size() - 1;
     this->coef = initArr;
@@ -30,7 +30,7 @@ std::string Polynomial::printPoly(bool ignoreCMDIncompatibility)
 {
     int max_degree = this->degree;
     std::string resultstr;
-    std::vector<std::pair<int, int>> term_list;
+    std::vector<std::pair<int64_t, int64_t>> term_list;
 
     for (int i = max_degree; i >= 0; i--)
     {
@@ -51,7 +51,7 @@ std::string Polynomial::printPoly(bool ignoreCMDIncompatibility)
     int term_count = term_list.size();
     for (int i = 1; i < term_count; i++)
     {
-        std::pair<int, int> term = term_list[i];
+        std::pair<int64_t, int64_t> term = term_list[i];
         if (term.first > 0)
             resultstr += " + ";
         else
@@ -70,7 +70,7 @@ std::string Polynomial::printPoly(bool ignoreCMDIncompatibility)
 
 Polynomial Polynomial::operator+(const Polynomial &other)
 {
-    auto fillZero = [](std::vector<int> coef_temp, int target) {
+    auto fillZero = [](std::vector<int64_t> coef_temp, int target) {
         while ((int)coef_temp.size() < target)
         {
             coef_temp.push_back(0);
@@ -78,7 +78,7 @@ Polynomial Polynomial::operator+(const Polynomial &other)
         return coef_temp;
     };
 
-    std::vector<int> p1, p2;
+    std::vector<int64_t> p1, p2;
     if (this->degree != other.degree)
     {
         if (this->degree > other.degree)
@@ -98,7 +98,7 @@ Polynomial Polynomial::operator+(const Polynomial &other)
         p2 = other.coef;
     }
 
-    std::vector<int> p3;
+    std::vector<int64_t> p3;
     if (p1.size() != p2.size())
     {
         throw "wtf is happening";
@@ -117,7 +117,7 @@ Polynomial Polynomial::operator+(const Polynomial &other)
 Polynomial Polynomial::operator*(const Polynomial &other)
 {
     int max_degree = this->degree + other.degree;
-    std::vector<int> resultcoef;
+    std::vector<int64_t> resultcoef;
     for (int i = 0; i <= max_degree; i++)
         resultcoef.push_back(0);
 

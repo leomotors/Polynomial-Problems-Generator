@@ -16,11 +16,11 @@ namespace PolyGenerator
         std::vector<std::pair<int, int>> roots = randPoly(degree);
 
         int count = roots.size();
-        std::vector<int> base_vec({-roots[0].first, roots[0].second});
+        std::vector<int64_t> base_vec({-roots[0].first, roots[0].second});
         Polynomial base(base_vec);
         for (int i = 1; i < count; i++)
         {
-            std::vector<int> temp_vec({-roots[i].first, roots[i].second});
+            std::vector<int64_t> temp_vec({-roots[i].first, roots[i].second});
             Polynomial temp(temp_vec);
             base = base * temp;
         }
