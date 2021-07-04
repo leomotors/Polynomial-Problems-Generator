@@ -11,7 +11,7 @@ namespace uni
     bool isWindows = false;
 #endif
 
-    std::unordered_map<int, std::string> dict{
+    std::unordered_map<int64_t, std::string> dict{
         {0, "⁰"},
         {1, "¹"},
         {2, "²"},
@@ -23,7 +23,7 @@ namespace uni
         {8, "⁸"},
         {9, "⁹"}};
 
-    std::string getSS(int n, bool ignoreCMDIncompatibility)
+    std::string getSS(int64_t n, bool ignoreCMDIncompatibility)
     {
         if (n <= 1)
             return "";

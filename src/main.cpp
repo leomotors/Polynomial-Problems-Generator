@@ -18,7 +18,7 @@
 void printMainMenu();
 void interactiveMode();
 void generateMode();
-bool argumentMode(int, char *[]);
+bool argumentMode(int64_t, char *[]);
 
 int main(int argc, char *argv[])
 {
@@ -103,18 +103,18 @@ void generateMode()
         return;
     }
 
-    int difficulity = tsi::getInt("Degree of Polynomial: ");
+    int64_t difficulity = tsi::getInt("Degree of Polynomial: ");
     if (difficulity < 2)
     {
         std::cout << "WARNING: Polynomial degree must be at least 2!" << std::endl;
         return;
     }
 
-    int T = tsi::getInt("Number of polynomial: ");
+    int64_t T = tsi::getInt("Number of polynomial: ");
 
     std::ofstream OutFile(ofile_location);
     std::ofstream KeyFile(keyf_location);
-    for (int i = 1; i <= T; i++)
+    for (int64_t i = 1; i <= T; i++)
     {
         Polynomial res = PolyGenerator::random(difficulity);
         OutFile << i << ") Solve " << res.printPoly(true) << " = 0" << std::endl;
@@ -126,7 +126,7 @@ void generateMode()
     KeyFile.close();
 }
 
-bool argumentMode(int argc, char *argv[])
+bool argumentMode(int64_t argc, char *argv[])
 {
     // * args : ./main [NUM_RANGE] [DENOM_RANGE] [DEGREE] [COUNT] [FNAMEPROB] [FNAMEKEY/__JSON_MODE__]
     if (argc != 7)
@@ -141,18 +141,18 @@ bool argumentMode(int argc, char *argv[])
     std::stringstream degree(argv[3]);
     std::stringstream count(argv[4]);
 
-    int nr_int = 0;
+    int64_t nr_int = 0;
     nr >> nr_int;
     pSettings::setNumRange(nr_int);
 
-    int dr_int = 0;
+    int64_t dr_int = 0;
     dr >> dr_int;
     pSettings::setDenomRange(dr_int);
 
-    int degree_int = 0;
+    int64_t degree_int = 0;
     degree >> degree_int;
 
-    int count_int = 0;
+    int64_t count_int = 0;
     count >> count_int;
 
     if (strcmp(argv[6], "__JSON_MODE__"))
@@ -167,7 +167,7 @@ bool argumentMode(int argc, char *argv[])
 
         std::ofstream outfile(outfileloc), keyfile(keyfileloc);
 
-        for (int i = 1; i <= count_int; i++)
+        for (int64_t i = 1; i <= count_int; i++)
         {
             Polynomial res = PolyGenerator::random(degree_int);
             outfile << i << ") Solve " << res.printPoly(true) << " = 0" << std::endl;
@@ -185,7 +185,7 @@ bool argumentMode(int argc, char *argv[])
                   << "," << std::endl;
         std::cout << "\"questions\": {" << std::endl;
 
-        for (int i = 1; i <= count_int; i++)
+        for (int64_t i = 1; i <= count_int; i++)
         {
             Polynomial res = PolyGenerator::random(degree_int);
             std::cout << "\"" << res.printPoly(true) << "\": " << std::endl;

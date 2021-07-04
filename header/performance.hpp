@@ -1,5 +1,5 @@
 namespace pp
 {
-    double diffFactor(int);
-    double performanceCalc(int, int, int, int, int, bool);
+    double diffFactor(int64_t);
+    double performanceCalc(int64_t, int64_t, int64_t, int64_t, int64_t, bool);
 }

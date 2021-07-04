@@ -7,7 +7,7 @@
 #include "utilsMethod.hpp"
 #include "pSettings.hpp"
 
-bool isAnswer(std::vector<std::pair<int, int>> roots_dup, std::vector<std::string> submission)
+bool isAnswer(std::vector<std::pair<int64_t, int64_t>> roots_dup, std::vector<std::string> submission)
 {
     if (pSettings::cheatModeStatus() && (submission[0] == "MAFS" || submission[0] == "METH"))
     {
@@ -15,21 +15,21 @@ bool isAnswer(std::vector<std::pair<int, int>> roots_dup, std::vector<std::strin
         return true;
     }
 
-    std::vector<std::pair<int, int>> roots = drop_dupl(roots_dup);
+    std::vector<std::pair<int64_t, int64_t>> roots = drop_dupl(roots_dup);
 
     if (roots.size() != submission.size())
         return false;
 
-    for (unsigned int i = 0; i < submission.size(); i++)
+    for (size_t i = 0; i < submission.size(); i++)
     {
         std::string thissubm = submission[i];
-        std::pair<int, int> convertedsubm;
+        std::pair<int64_t, int64_t> convertedsubm;
         std::vector<std::string> splited = splitStr(thissubm, '/');
         if (splited.size() < 2)
             splited.push_back("1");
 
         int thisCorrect = false;
-        for (unsigned int j = 0; j < roots.size(); j++)
+        for (size_t j = 0; j < roots.size(); j++)
         {
             bool num = splited[0] == std::to_string(roots[j].first);
             bool denom = splited[1] == std::to_string(roots[j].second);

@@ -5,9 +5,9 @@
 
 std::vector<std::string> splitStr(std::string str, char spliter)
 {
-    int ssize = str.size();
+    int64_t ssize = str.size();
     std::vector<std::string> splited_str;
-    int index = 0;
+    int64_t index = 0;
     std::string substrtemp;
     while (index < ssize)
     {
@@ -25,16 +25,16 @@ std::vector<std::string> splitStr(std::string str, char spliter)
     return splited_str;
 }
 
-std::string rootsToStr(std::vector<std::pair<int, int>> roots_dup, bool _JSON)
+std::string rootsToStr(std::vector<std::pair<int64_t, int64_t>> roots_dup, bool _JSON)
 {
     std::string result_str;
 
-    std::vector<std::pair<int, int>> roots = drop_dupl(roots_dup);
-    int roots_count = roots.size();
+    std::vector<std::pair<int64_t, int64_t>> roots = drop_dupl(roots_dup);
+    int64_t roots_count = roots.size();
 
-    for (int i = 0; i < roots_count; i++)
+    for (int64_t i = 0; i < roots_count; i++)
     {
-        std::pair<int, int> root = roots[i];
+        std::pair<int64_t, int64_t> root = roots[i];
 
         if (_JSON)
             result_str += "\"";
@@ -55,13 +55,13 @@ std::string rootsToStr(std::vector<std::pair<int, int>> roots_dup, bool _JSON)
     return result_str;
 }
 
-std::vector<std::pair<int, int>> drop_dupl(std::vector<std::pair<int, int>> roots_dup)
+std::vector<std::pair<int64_t, int64_t>> drop_dupl(std::vector<std::pair<int64_t, int64_t>> roots_dup)
 {
-    std::vector<std::pair<int, int>> roots;
-    for (unsigned int i = 0; i < roots_dup.size(); i++)
+    std::vector<std::pair<int64_t, int64_t>> roots;
+    for (size_t i = 0; i < roots_dup.size(); i++)
     {
         bool alreadyIn = false;
-        for (unsigned int j = 0; j < roots.size(); j++)
+        for (size_t j = 0; j < roots.size(); j++)
         {
             if (roots[j] == roots_dup[i])
             {
@@ -76,7 +76,7 @@ std::vector<std::pair<int, int>> drop_dupl(std::vector<std::pair<int, int>> root
     return roots;
 }
 
-double factorial(int n)
+double factorial(int64_t n)
 {
     if (n == 1)
         return 1.0;

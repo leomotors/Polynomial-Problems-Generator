@@ -12,19 +12,19 @@ namespace pp
     double e1t5 = std::pow(2.717, 1.5);
     double e2 = 2.717 * 2.717;
 
-    double diffFactor(int degree)
+    double diffFactor(int64_t degree)
     {
-        int dr = pSettings::getDenomRange();
-        double denominatorFactor = std::min(std::max(1, 2 * (dr - 1)), 10) + std::sqrt(std::max(1, dr - 7)) - 1;
+        int64_t dr = pSettings::getDenomRange();
+        double denominatorFactor = std::min(std::max((int64_t)1, 2 * (dr - 1)), (int64_t)10) + std::sqrt(std::max((int64_t)1, dr - 7)) - 1;
 
-        int nr = pSettings::getNumRange();
+        int64_t nr = pSettings::getNumRange();
         double numeratorFactor = std::sqrt(nr);
 
         double degreeFactor = factorial(degree) / 2;
         return denominatorFactor * numeratorFactor * degreeFactor;
     }
 
-    double performanceCalc(int correct, int miss, int injurytime, int gameTime, int pDegree, bool considerGameTime)
+    double performanceCalc(int64_t correct, int64_t miss, int64_t injurytime, int64_t gameTime, int64_t pDegree, bool considerGameTime)
     {
         if (correct == 0 || (correct <= 1 && injurytime > 0))
         {
@@ -35,7 +35,7 @@ namespace pp
 
         double DiffFactor = diffFactor(pDegree);
 
-        int totalQuestion = correct + miss;
+        int64_t totalQuestion = correct + miss;
 
         double expectedScore = gameTime / DiffFactor;
 
@@ -57,7 +57,7 @@ namespace pp
         {
             correct -= 1;
             answeredFactor = correct / expectedScore;
-            double bonustime = (double)std::max(1, 10 - injurytime);
+            double bonustime = (double)std::max((int64_t)1, 10 - injurytime);
             injuryPPFactor = std::sqrt((bonustime / 10.00) + std::pow(3.00, -3.00 * bonustime)) * std::pow(gameTimeFactor, 3.0) / 2.00;
         }
 

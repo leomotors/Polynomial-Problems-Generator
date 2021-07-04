@@ -5,7 +5,7 @@
 
 namespace uni
 {
-    std::string getSS(int, bool ignoreCMDIncompatibility = false);
+    std::string getSS(int64_t, bool ignoreCMDIncompatibility = false);
 }
 
 #endif

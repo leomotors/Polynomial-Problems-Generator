@@ -28,11 +28,11 @@ void Polynomial::update()
 
 std::string Polynomial::printPoly(bool ignoreCMDIncompatibility)
 {
-    int max_degree = this->degree;
+    int64_t max_degree = this->degree;
     std::string resultstr;
     std::vector<std::pair<int64_t, int64_t>> term_list;
 
-    for (int i = max_degree; i >= 0; i--)
+    for (int64_t i = max_degree; i >= 0; i--)
     {
         if (this->coef[i])
         {
@@ -48,8 +48,8 @@ std::string Polynomial::printPoly(bool ignoreCMDIncompatibility)
         resultstr += uni::getSS(term_list[0].second, ignoreCMDIncompatibility);
     }
 
-    int term_count = term_list.size();
-    for (int i = 1; i < term_count; i++)
+    int64_t term_count = term_list.size();
+    for (int64_t i = 1; i < term_count; i++)
     {
         std::pair<int64_t, int64_t> term = term_list[i];
         if (term.first > 0)
@@ -71,7 +71,7 @@ std::string Polynomial::printPoly(bool ignoreCMDIncompatibility)
 Polynomial Polynomial::operator+(const Polynomial &other)
 {
     auto fillZero = [](std::vector<int64_t> coef_temp, int target) {
-        while ((int)coef_temp.size() < target)
+        while ((int64_t)coef_temp.size() < target)
         {
             coef_temp.push_back(0);
         }
@@ -104,8 +104,8 @@ Polynomial Polynomial::operator+(const Polynomial &other)
         throw "wtf is happening";
     }
 
-    int temp_size = p1.size();
-    for (int i = 0; i < temp_size; i++)
+    int64_t temp_size = p1.size();
+    for (int64_t i = 0; i < temp_size; i++)
     {
         p3.push_back(p1[i] + p2[i]);
     }
@@ -116,14 +116,14 @@ Polynomial Polynomial::operator+(const Polynomial &other)
 
 Polynomial Polynomial::operator*(const Polynomial &other)
 {
-    int max_degree = this->degree + other.degree;
+    int64_t max_degree = this->degree + other.degree;
     std::vector<int64_t> resultcoef;
-    for (int i = 0; i <= max_degree; i++)
+    for (int64_t i = 0; i <= max_degree; i++)
         resultcoef.push_back(0);
 
-    for (int i = 0; i <= this->degree; i++)
+    for (int64_t i = 0; i <= this->degree; i++)
     {
-        for (int j = 0; j <= other.degree; j++)
+        for (int64_t j = 0; j <= other.degree; j++)
         {
             resultcoef[i + j] += (this->coef[i] * other.coef[j]);
         }

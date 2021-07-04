@@ -15,8 +15,8 @@
 
 double testMode()
 {
-    int questions = tsi::getInt("Number of question: ");
-    int pDegree = tsi::getInt("Degree of Polynomial: ");
+    int64_t questions = tsi::getInt("Number of question: ");
+    int64_t pDegree = tsi::getInt("Degree of Polynomial: ");
 
     if (pDegree < 2)
     {
@@ -24,11 +24,11 @@ double testMode()
         return -1;
     }
 
-    int score = 0;
-    int wrong = 0;
+    int64_t score = 0;
+    int64_t wrong = 0;
     const std::time_t start = std::time(nullptr);
 
-    for (int i = 1; i <= questions; i++)
+    for (int64_t i = 1; i <= questions; i++)
     {
         Polynomial res = PolyGenerator::random(pDegree);
         std::cout << i << ") Solve " << res.printPoly() << " = 0" << std::endl;
@@ -50,7 +50,7 @@ double testMode()
         std::cout << std::endl;
     }
     const std::time_t end = std::time(nullptr);
-    int time_used = end - start;
+    int64_t time_used = end - start;
 
     double performancePoint = pp::performanceCalc(score, wrong, 0, time_used, pDegree, false);
 
@@ -65,11 +65,11 @@ double testMode()
     return (double)score / questions;
 }
 
-int endlessMode()
+int64_t endlessMode()
 {
-    int pDegree = tsi::getInt("Degree of Polynomial: ");
-    int gachaFactor = 3;
-    int innerGachaFactor = 5;
+    int64_t pDegree = tsi::getInt("Degree of Polynomial: ");
+    int64_t gachaFactor = 3;
+    int64_t innerGachaFactor = 5;
 
     if (pDegree < 2)
     {
@@ -77,7 +77,7 @@ int endlessMode()
         return -1;
     }
 
-    int score = 0;
+    int64_t score = 0;
     while (true)
     {
         std::cout << "CURRENT SCORE: " << score << std::endl;
@@ -131,10 +131,10 @@ int endlessMode()
 
 #define PENALTY_TIME 5
 
-int timelimitMode()
+int64_t timelimitMode()
 {
-    int timelimit = tsi::getInt("Enter Time: ");
-    int pDegree = tsi::getInt("Enter Degree of Polynomial: ");
+    int64_t timelimit = tsi::getInt("Enter Time: ");
+    int64_t pDegree = tsi::getInt("Enter Degree of Polynomial: ");
 
     if (timelimit < 30)
     {
@@ -148,18 +148,19 @@ int timelimitMode()
         return -1;
     }
 
-    auto TimeElapsed = [](const std::time_t from) {
+    auto TimeElapsed = [](const std::time_t from)
+    {
         return std::time(nullptr) - from;
     };
     const std::time_t start = std::time(nullptr);
 
-    int score = 0;
-    int penalty = 0;
+    int64_t score = 0;
+    int64_t penalty = 0;
     bool lastIsCorrect = false;
     bool hasInjuryTime;
     while (true)
     {
-        int timeLeft = timelimit - TimeElapsed(start) - penalty;
+        int64_t timeLeft = timelimit - TimeElapsed(start) - penalty;
         if (timeLeft <= 0)
         {
             hasInjuryTime = (timeLeft == 0) ? false : true;
@@ -197,7 +198,7 @@ int timelimitMode()
     std::cout << "TIME'S UP!" << std::endl;
     std::cout << "Within time of " << timelimit << " secs. ";
 
-    int injuryTime = 0;
+    int64_t injuryTime = 0;
     if (score > 0)
     {
         if (lastIsCorrect && hasInjuryTime)

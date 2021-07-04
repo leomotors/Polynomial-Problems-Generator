@@ -7,7 +7,7 @@
 class Polynomial
 {
 public:
-    int degree;
+    int64_t degree;
     std::vector<int64_t> coef;
     Polynomial();
     Polynomial(std::vector<int64_t>);

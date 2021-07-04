@@ -8,12 +8,12 @@
 
 namespace pSettings
 {
-    int num_range = 20;
-    int denom_range = 1;
+    int64_t num_range = 20;
+    int64_t denom_range = 1;
     bool cheatMode = false;
     bool verboseMode = false;
 
-    void setNumRange(int nr)
+    void setNumRange(int64_t nr)
     {
         if (nr < 2)
         {
@@ -22,7 +22,7 @@ namespace pSettings
         }
         num_range = nr;
     }
-    void setDenomRange(int dr)
+    void setDenomRange(int64_t dr)
     {
         if (dr < 1)
         {
@@ -31,11 +31,11 @@ namespace pSettings
         }
         denom_range = dr;
     }
-    int getNumRange()
+    int64_t getNumRange()
     {
         return num_range;
     }
-    int getDenomRange()
+    int64_t getDenomRange()
     {
         return denom_range;
     }
@@ -53,8 +53,8 @@ namespace pSettings
     void page()
     {
         menu::settings();
-        int choice = tsi::getInt("Choice: ");
-        int nr, dr;
+        int64_t choice = tsi::getInt("Choice: ");
+        int64_t nr, dr;
         switch (choice)
         {
         case 1:

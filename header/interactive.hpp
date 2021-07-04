@@ -2,7 +2,7 @@
 #define INTERACTIVE_MODE
 
 double testMode();
-int endlessMode();
-int timelimitMode();
+int64_t endlessMode();
+int64_t timelimitMode();
 
 #endif
